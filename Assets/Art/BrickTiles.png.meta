@@ -755,6 +755,54 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: BrickStairs_L
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -6, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a628d7eecb360e444ba699738cec01fe
+      internalID: 174291074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickStairs_R
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: 6, y: -8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 294a2f73637bce7478a59af61dde4ec0
+      internalID: -1395694978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -766,32 +814,34 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BrickSlab_6: 3791711090355258798
-      Brick_6: -2264352229664829816
-      BrickSlab_5: 5391826080246625674
-      BrickSlab_0: -6311831756184838307
-      Brick_8: 4458025239708757380
-      Brick_5: 6806727521532506813
-      Brick_7: 7632361584798008803
-      Brick_4: -3494140179156671524
-      Brick_12: -7930542462037729159
-      Brick_15: -7953338546522693728
-      BrickSlab_4: 1632182467489259526
-      BrickSlab_7: 3333811860069353076
-      Brick_3: -2303018406930338231
-      Brick_2: -269859198014001125
-      BrickSlab_8: -3307693014660557516
-      Brick_1: -8768350737168069659
-      Brick_11: 1058364518384663802
-      Brick_14: -6843071399025642910
-      Brick_13: -8309403925184900194
-      Brick_0: 2313879297437866347
-      BrickSlab_1: -6319390338527022505
-      BrickSlab_2: 4690379118485204307
-      BrickSlab_3: 6581285147599549704
-      Brick_10: 5940110638061379203
-      BrickSlab_9: 44156146872456719
-      Brick_9: -3090568066354299590
+      BrickStairs_L: 174291074
+      BrickSlab_6: -322875272
+      Brick_6: -1105483505
+      BrickSlab_5: -1543602361
+      BrickSlab_0: -1088526970
+      Brick_8: -1076463400
+      Brick_5: -1003156670
+      Brick_7: 2078496334
+      Brick_4: -1990710021
+      Brick_12: 1230915132
+      Brick_15: 994154672
+      BrickSlab_4: 833784231
+      BrickSlab_7: 736206397
+      Brick_3: -189983353
+      Brick_2: -1515009808
+      BrickSlab_8: 389984121
+      BrickStairs_R: -1395694978
+      Brick_1: 1983942503
+      Brick_11: -268527419
+      Brick_14: -1466648976
+      Brick_13: 200391121
+      Brick_0: -426073839
+      BrickSlab_1: 20112296
+      BrickSlab_2: -758914740
+      BrickSlab_3: -2053480727
+      Brick_10: -1444599393
+      BrickSlab_9: -1733955427
+      Brick_9: -2080166469
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
