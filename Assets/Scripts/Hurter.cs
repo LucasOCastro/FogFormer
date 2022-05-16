@@ -9,11 +9,13 @@ namespace FogFormer
     {
         [SerializeField] private int damage;
         [SerializeField] private float knockback;
+        [Range(0,80)]
+        [SerializeField] private float knockbackAngle;
         [SerializeField] private float stun;
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D col)
         {
-            var health = collision.collider.GetComponent<HealthManager>();
+            var health = col.GetComponent<HealthManager>();
             if (health == null)
             {
                 return;
@@ -24,7 +26,9 @@ namespace FogFormer
             {
                 float xDif = Mathf.Sign(rb.position.x - transform.position.x);
                 //EVEN MORE TEMP
-                Vector2 dir = new Vector2(xDif, 1).normalized;
+                float radAngle = Mathf.Deg2Rad * knockbackAngle;
+                Vector2 dir = new Vector2(Mathf.Cos(radAngle) * xDif, Mathf.Sin(radAngle));
+                rb.velocity = Vector2.zero;
                 rb.AddForce(dir * knockback, ForceMode2D.Impulse);
                 status.Stun(stun);
             }
