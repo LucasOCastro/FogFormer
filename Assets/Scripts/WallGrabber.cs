@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace FogFormer
 {
@@ -24,6 +23,8 @@ namespace FogFormer
         [SerializeField] private bool releaseFromMovingAway;
         [SerializeField] private bool climbByMovingIntoWall;
         [SerializeField] private string releaseButton;
+
+        public Action<bool> OnWallGrabUpdate;
         
         private int _grabSign;
         public bool IsGrabbing => _grabSign != 0;
@@ -46,14 +47,17 @@ namespace FogFormer
 
         private void SetGrab(int grabSign)
         {
-            _grabSign = grabSign;
+            if (_grabSign == grabSign) return;
+            
             if (grabSign == 0) {
                 _rb.constraints ^= (RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX);
-                _rb.position += Vector2.right * _grabSign * releaseDisplacement; 
+                _rb.position += Vector2.right * -_grabSign * releaseDisplacement;
             }
             else {
                 _rb.constraints |= (RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX);
             }
+            _grabSign = grabSign;
+            OnWallGrabUpdate?.Invoke(grabSign != 0);
         }
 
         private void TryGrab()
@@ -69,7 +73,8 @@ namespace FogFormer
                 _grabbedLedge = WallGrabUtility.DetectLedge(_collider, climbCastHeight, xSign, mask, out _edgeFloorPoint);
                 if (!onlyGrabOntoLedge || _grabbedLedge)
                 {
-                    SetGrab(xSign);                    
+                    SetGrab(xSign);
+                    _rb.position = new Vector2(_rb.position.x,_edgeFloorPoint.y - _collider.bounds.extents.y);
                 }
             }
         }
@@ -82,33 +87,46 @@ namespace FogFormer
             {
                 return;
             }
-            Vector2 finalPosition = _edgeFloorPoint + Vector2.up * _collider.bounds.extents.y;
-            transform.position = finalPosition;
             SetGrab(0);
+            Vector2 finalPosition = _edgeFloorPoint + Vector2.up * _collider.bounds.extents.y;
+            _rb.position = finalPosition;
         }
 
         private void WallJump()
         {
-            Quaternion rotation = Quaternion.AngleAxis(wallJumpAngle, (_grabSign == -1) ? Vector3.forward : Vector3.back);
-            Vector2 direction = rotation * (Vector2.right * -_grabSign);
-            //Quaternion.AngleAxis(wallJumpAngle, Vector3.forward);
-            SetGrab(0);
+            
+            float radAngle = Mathf.Deg2Rad * wallJumpAngle;
+            Vector2 direction = new Vector2(Mathf.Cos(radAngle) * -_grabSign, Mathf.Sin(radAngle));
             _rb.AddForce(direction * wallJumpForce, ForceMode2D.Impulse);
+            SetGrab(0);
+            
         }
         
         private void Update()
         {
+            if (wallJumpButton != "" && Input.GetButtonDown(wallJumpButton))
+            {
+                WallJump();
+            }
             //TODO remove
             #if UNITY_EDITOR
             if (_grabSign != 0)
             {
-                Debug.DrawRay(_collider.bounds.CenterTop() + (Vector2.up * climbCastHeight), Vector2.right * _grabSign * _collider.bounds.size.x * 1.5f, Color.red);
-                Debug.DrawRay(_collider.bounds.CenterTop() + (Vector2.up * climbCastHeight) + Vector2.right * _grabSign * _collider.bounds.size.x, Vector2.down *
-                    (climbCastHeight + _collider.bounds.extents.y), Color.red);    
+                Bounds bounds = _collider.bounds;
+                Debug.DrawRay(bounds.CenterTop() + (Vector2.up * climbCastHeight), Vector2.right * _grabSign * bounds.size.x * 1.5f, Color.red);
+                Debug.DrawRay(_collider.bounds.CenterTop() + (Vector2.up * climbCastHeight) + Vector2.right * _grabSign * bounds.size.x, Vector2.down *
+                    (climbCastHeight + bounds.extents.y), Color.red);    
+                
+                float radAngle = Mathf.Deg2Rad * wallJumpAngle;
+                Vector2 direction = new Vector2(Mathf.Cos(radAngle) * -_grabSign, Mathf.Sin(radAngle));
+                Debug.DrawRay(transform.position, direction * wallJumpForce, Color.green);
+                Debug.DrawRay(transform.position, Vector2.right * -_grabSign, Color.yellow);
             }
             #endif
-            
-            if (_grounded.IsGrounded())
+        }
+        private void FixedUpdate()
+        {
+            if (_grounded.IsGrounded)
             {
                 return;
             }
@@ -120,11 +138,7 @@ namespace FogFormer
             }
             
             float yInput = _controller.MoveInput.y;
-            if (wallJumpButton != "" && Input.GetButtonDown(wallJumpButton))
-            {
-                WallJump();
-            }
-            else if (yInput < 0 || (releaseFromMovingAway && _controller.InputDirection == -_grabSign) || (releaseButton != "" && Input.GetButtonDown(releaseButton)))
+            if (yInput < 0 || (releaseFromMovingAway && _controller.InputDirection == -_grabSign) || (releaseButton != "" && Input.GetButtonDown(releaseButton)))
             {
                 SetGrab(0);
             }

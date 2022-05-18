@@ -1,45 +1,66 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace FogFormer
 {
-    [RequireComponent((typeof(Rigidbody2D)))]
+    [RequireComponent((typeof(Collider2D)))]
     public class GroundedController : MonoBehaviour
     {
         [SerializeField] private LayerMask mask;
         [SerializeField] private float castDistance = .1f;
         [SerializeField] private float sideCastOffset = .1f;
-
+        
+        public bool IsGrounded { get; private set; }
+        public Vector2 GroundNormal { get; private set; }
+        public Vector2 GroundSlope { get; private set; }
+        
         private Collider2D _collider;
-        private Vector2[] _castOffsets;
         private void Awake()
         {
             _collider = GetComponent<Collider2D>();
-            var bounds = _collider.bounds;
-            float bottom = bounds.min.y;
-            Vector2 center = new Vector2(bounds.center.x, bottom);
-            Vector2 min = new Vector2(center.x - sideCastOffset, bottom);
-            Vector2 max = new Vector2(center.x + sideCastOffset, bottom);
-            _castOffsets = new[] {min, center, max};
         }
 
-        #if UNITY_EDITOR
+        
         private void Update()
         {
-            foreach (var o in _castOffsets)
+            UpdateGroundedStatus();
+#if UNITY_EDITOR
+            foreach (var o in GetCastOrigins())
             {
-                Vector2 center = _collider.bounds.center;
-                Debug.DrawRay( center + o, Vector2.down * castDistance, Color.blue);
+                Debug.DrawRay( o, Vector2.down * castDistance, IsGrounded ? Color.green : Color.red);
             }
+            //Debug.DrawRay(_collider.bounds.CenterBottom(), GroundSlope * 2.5f, Color.yellow);
+#endif
         }
-        #endif
 
-        //Is linq a good idea? Rider recommended it but idk if i like it
-        public bool IsGrounded()
+        private IEnumerable<Vector2> GetCastOrigins()
         {
-            Vector2 center = _collider.bounds.center;
-            return _castOffsets.Any(o => Physics2D.Raycast(center + o, -transform.up, castDistance, mask));
+            var bounds = _collider.bounds;
+            float bottom = bounds.min.y;
+            float centerX = bounds.center.x;
+            yield return new Vector2(centerX, bottom);
+            yield return new Vector2(centerX - sideCastOffset, bottom);
+            yield return new Vector2(centerX + sideCastOffset, bottom);
+        }
+
+        private void UpdateGroundedStatus()
+        {
+            foreach (var o in GetCastOrigins())
+            {
+                var cast = Physics2D.Raycast(o, Vector2.down, castDistance, mask);
+                if (cast)
+                {
+                    IsGrounded = true;
+                    GroundNormal = cast.normal;
+                    GroundSlope = Vector2.Perpendicular(GroundNormal);
+                    return;
+                }
+            }
+            IsGrounded = false;
+            GroundNormal = Vector2.zero;
+            GroundSlope = Vector2.zero;
         }
     }
 }

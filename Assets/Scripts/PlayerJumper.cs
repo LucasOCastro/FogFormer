@@ -10,7 +10,8 @@ namespace FogFormer
         [SerializeField] private string jumpButton = "Jump";
 
         [Header("Gravity")] 
-        [SerializeField] private float gravity;
+        [SerializeField] private float groundGravity;
+        [SerializeField] private float fallGravity;
         [SerializeField] private float jumpGravity;
         [SerializeField] private float longJumpGravity;
 
@@ -36,19 +37,23 @@ namespace FogFormer
         
         private float GetGravityScale()
         {
+            if (_grounded.IsGrounded)
+            {
+                return groundGravity;
+            }
             if (_rb.velocity.y <= 0) {
-                return gravity;
+                return fallGravity;
             }
             return Input.GetButton(jumpButton) ? longJumpGravity : jumpGravity;
         }
 
-        public void Jump()
+        private void Jump()
         {
             _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             _jumpQueued = false;
         }
         
-        private bool CanJump() => _jumpQueued && _jumpQueueTimer < jumpQueueSeconds && _grounded.IsGrounded();
+        private bool CanJump() => _jumpQueued && _jumpQueueTimer < jumpQueueSeconds && _grounded.IsGrounded;
         private void FixedUpdate()
         {
             if (CanJump())
