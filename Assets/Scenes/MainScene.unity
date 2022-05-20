@@ -10565,13 +10565,14 @@ GameObject:
   - component: {fileID: 1785163909}
   - component: {fileID: 1785163908}
   - component: {fileID: 1785163910}
-  - component: {fileID: 1785163911}
-  - component: {fileID: 1785163907}
-  - component: {fileID: 1785163912}
   - component: {fileID: 1785163913}
   - component: {fileID: 1785163914}
-  - component: {fileID: 1785163915}
+  - component: {fileID: 1785163907}
   - component: {fileID: 1785163916}
+  - component: {fileID: 1785163912}
+  - component: {fileID: 1785163911}
+  - component: {fileID: 1785163915}
+  - component: {fileID: 1785163917}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -10715,6 +10716,8 @@ MonoBehaviour:
   stunComponents:
   - {fileID: 1785163907}
   - {fileID: 1785163911}
+  - {fileID: 1785163917}
+  - {fileID: 1785163916}
 --- !u!114 &1785163915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10737,9 +10740,8 @@ MonoBehaviour:
   wallJumpForce: 5
   wallJumpAngle: 60
   wallJumpButton: Jump
-  releaseFromMovingAway: 0
-  climbByMovingIntoWall: 0
-  releaseButton: 
+  releaseButton: ReleaseLedge
+  climbButton: ClimbLedge
 --- !u!114 &1785163916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10752,6 +10754,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe100dbab38c4e529586c6f066e6cd1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1785163917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785163906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cbdf00cde394a9ba4f29ed5c2b33989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashDistance: 1.25
+  dashButton: Dash
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 256
+  cooldownSeconds: 1.8
 --- !u!1 &1894824686
 GameObject:
   m_ObjectHideFlags: 0

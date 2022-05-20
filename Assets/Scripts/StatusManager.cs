@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace FogFormer
 {
+    //This is honestly more of a PlayerFreezer or something like that
     public class StatusManager : MonoBehaviour
     {
         //TEMP VERY TEMP
@@ -9,7 +10,8 @@ namespace FogFormer
 
         private bool _stunned;
         private float _stunSeconds, _stunTimer;
-        
+
+        public void PermaStun() => Stun(-1);
         public void Stun(float seconds)
         {
             _stunned = true;
@@ -22,8 +24,10 @@ namespace FogFormer
             }
         }
 
-        private void DeStun()
+        public void DeStun()
         {
+            if (!_stunned) return;
+            
             _stunned = false;
             foreach (var comp in stunComponents)
             {
@@ -35,7 +39,7 @@ namespace FogFormer
         {
             if (!_stunned) return;
             _stunTimer += Time.deltaTime;
-            if (_stunTimer > _stunSeconds)
+            if (_stunSeconds >= 0 && _stunTimer > _stunSeconds)
             {
                 DeStun();
             }
