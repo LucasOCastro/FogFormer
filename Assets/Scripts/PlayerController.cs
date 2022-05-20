@@ -23,6 +23,7 @@ namespace FogFormer
         public Vector2 MoveInput { get; private set; }
         //Mathf.Sign is dumb
         public int InputDirection => MoveInput.x < 0 ? -1 : (MoveInput.x > 0 ? 1 : 0);
+        public int LookDirection { get; private set; } = 1;
 
         private void Awake()
         {
@@ -33,6 +34,7 @@ namespace FogFormer
         private void Update()
         {
             MoveInput = new Vector2(Input.GetAxis(horizontalAxis), Input.GetAxis(verticalAxis));
+            if (MoveInput.x != 0) LookDirection = InputDirection;
         }
 
         private float VelocityDelta
