@@ -1,23 +1,13 @@
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace FogFormer.AI.Nodes
 {
     public abstract class CompositeNode : Node
     {
-        [UnityEngine.SerializeField] protected Node[] _children;
-
-        /*private int _currentProcessedIndex;
-        protected IEnumerable<Node> Children
-        {
-            get
-            {
-                _currentProcessedIndex = 0;
-                for (_currentProcessedIndex = 0; _currentProcessedIndex < _children.Length; _currentProcessedIndex++)
-                {
-                    yield return _children[_currentProcessedIndex];
-                }
-            }
-        }*/
+        [HideInInspector] 
+        [SerializeField] protected List<Node> children;
 
         private int _runningNodeIndex;
         protected void ReportRunning(int index)

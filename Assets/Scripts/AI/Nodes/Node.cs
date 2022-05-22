@@ -1,9 +1,14 @@
+using UnityEngine;
+
 namespace FogFormer.AI.Nodes
 {
-    [System.Serializable]
-    public abstract class Node
+    public abstract class Node : UnityEngine.ScriptableObject
     {
-        public BehaviorTree ParentTree { get; }
         public abstract NodeState Tick();
+        
+#if UNITY_EDITOR
+        [HideInInspector] public string guid;
+        [HideInInspector] public Vector2 position;
+#endif
     }
 }

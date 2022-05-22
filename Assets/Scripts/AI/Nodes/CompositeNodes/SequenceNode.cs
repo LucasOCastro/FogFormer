@@ -6,9 +6,9 @@ namespace FogFormer.AI.Nodes
     {
         public override NodeState Tick()
         {
-            for (int i  = StartingIndex; i < _children.Length; i++)
+            for (int i  = StartingIndex; i < children.Count; i++)
             {
-                var state = _children[i].Tick();
+                var state = children[i].Tick();
                 switch (state)
                 {
                     case NodeState.Failure: 
