@@ -5,11 +5,16 @@ namespace FogFormer.AI
 {
     public class SimpleWanderer : MonoBehaviour
     {
+        private static readonly int Walking = Animator.StringToHash("walking");
+
         [SerializeField] private Transform wanderTargetA, wanderTargetB;
         [SerializeField] private float speed;
+        [SerializeField] private float restSeconds;
+        //TODO TEMP
+        [SerializeField] private Animator animator;
 
         private Transform _currentTarget;
-
+        private float _restTimer;
         private void Awake()
         {
             _currentTarget = wanderTargetA;
@@ -26,6 +31,14 @@ namespace FogFormer.AI
 
         private void SwitchTarget()
         {
+            if (_restTimer < restSeconds)
+            {
+                animator.SetBool(Walking, false);
+                _restTimer += Time.deltaTime;
+                return;
+            }
+            animator.SetBool(Walking, true);
+            _restTimer = 0;
             _currentTarget = (_currentTarget == wanderTargetA) ? wanderTargetB : wanderTargetA;
         }
     }
