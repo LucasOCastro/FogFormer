@@ -7,9 +7,9 @@ namespace FogFormer.AI.Nodes
         [HideInInspector]
         [SerializeField] private Node child;
 
-        public override NodeState Tick()
+        public override NodeState Tick(BehaviorRunData data)
         {
-            return child.Tick();
+            return child.Tick(data);
         }
         
         public override Node Clone()

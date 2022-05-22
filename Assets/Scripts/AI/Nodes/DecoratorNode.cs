@@ -10,9 +10,9 @@ namespace FogFormer.AI.Nodes
         
         protected abstract NodeState Decorate(NodeState state);
         
-        public override NodeState Tick()
+        public override NodeState Tick(BehaviorRunData data)
         {
-            return Decorate(child.Tick());
+            return Decorate(child.Tick(data));
         }
 
         public override Node Clone()

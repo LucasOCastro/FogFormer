@@ -17,9 +17,9 @@ namespace FogFormer.AI
         [HideInInspector]
         [SerializeField] private List<Node> allNodes = new();
         public IEnumerable<Node> AllNodes => allNodes;
-        public void Tick()
+        public void Tick(BehaviorRunData data)
         {
-            rootNode.Tick();
+            rootNode.Tick(data);
         }
 
         public BehaviorTree Clone()

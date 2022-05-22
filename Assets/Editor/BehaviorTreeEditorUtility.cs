@@ -18,8 +18,8 @@ namespace FogFormer.Editor
             {
                 case CompositeNode composite:
                 {
-                    var childrenList = CompositeChildrenField.GetValue(composite) as List<Node>;
-                    childrenList?.Add(child);
+                    var childrenList = (List<Node>)CompositeChildrenField.GetValue(composite);
+                    childrenList.Add(child);
                     break;
                 }
                 case DecoratorNode decorator:

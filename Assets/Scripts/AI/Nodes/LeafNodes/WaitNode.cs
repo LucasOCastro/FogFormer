@@ -5,7 +5,7 @@ namespace FogFormer.AI.Nodes
     {
         [SerializeField] private float seconds = 1;
         private float _timer;
-        public override NodeState Tick()
+        public override NodeState Tick(BehaviorRunData data)
         {
             if (_timer < seconds)
             {

@@ -4,7 +4,7 @@ namespace FogFormer.AI.Nodes
 {
     public abstract class Node : UnityEngine.ScriptableObject
     {
-        public abstract NodeState Tick();
+        public abstract NodeState Tick(BehaviorRunData data);
 
         public virtual Node Clone()
         {
