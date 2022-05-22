@@ -36,7 +36,7 @@ namespace FogFormer.Editor
         {
             if (node is LeafNode) return;
             
-            var capacity = (node is DecoratorNode) ? Port.Capacity.Single : Port.Capacity.Multi;
+            var capacity = (node is CompositeNode) ? Port.Capacity.Multi : Port.Capacity.Single;
             output = InstantiatePort(Orientation.Horizontal, Direction.Output, capacity, typeof(bool));
             output.portName = "";
             outputContainer.Add(output);

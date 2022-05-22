@@ -5,6 +5,11 @@ namespace FogFormer.AI.Nodes
     public abstract class Node : UnityEngine.ScriptableObject
     {
         public abstract NodeState Tick();
+
+        public virtual Node Clone()
+        {
+            return Instantiate(this);
+        }
         
 #if UNITY_EDITOR
         [HideInInspector] public string guid;

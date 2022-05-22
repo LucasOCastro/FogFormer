@@ -6,7 +6,6 @@ namespace FogFormer.AI.Nodes
 {
     public abstract class CompositeNode : Node
     {
-        [HideInInspector] 
         [SerializeField] protected List<Node> children;
 
         private int _runningNodeIndex;
@@ -28,6 +27,13 @@ namespace FogFormer.AI.Nodes
                 _runningNodeIndex = -1;
                 return index;
             }
+        }
+
+        public override Node Clone()
+        {
+            var clone = Instantiate(this);
+            clone.children = children.ConvertAll(n => n.Clone());
+            return clone;
         }
     }
 }

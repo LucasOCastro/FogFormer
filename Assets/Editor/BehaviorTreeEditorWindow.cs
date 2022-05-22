@@ -2,6 +2,7 @@
 using FogFormer.AI;
 using FogFormer.AI.Nodes;
 using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -19,12 +20,12 @@ namespace FogFormer.Editor
     
         private BehaviorTreeView _treeView;
         private InspectorView _inspectorView;
+        private ObjectField _treeSelector;
         public void CreateGUI()
         {
             // Each editor window contains a root VisualElement object
             VisualElement root = rootVisualElement;
-
-
+            
             // Import UXML
             var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/BehaviorTreeEditorWindow.uxml");
             visualTree.CloneTree(root);
@@ -37,12 +38,20 @@ namespace FogFormer.Editor
             _treeView = root.Q<BehaviorTreeView>();
             _inspectorView = root.Q<InspectorView>();
 
-            _treeView.OnNodeSelected += OnNodeSelectionChange;
+            _treeSelector = root.Q<ObjectField>();
+            _treeSelector.objectType = typeof(BehaviorTree);
+            _treeSelector.RegisterValueChangedCallback(e => SelectTree(e.newValue as BehaviorTree));
 
-            if (_treeView.tree == null)
+            _treeView.OnNodeSelected += OnNodeSelectionChange;
+        }
+
+        private void SelectTree(BehaviorTree tree)
+        {
+            if (_treeSelector.value != tree)
             {
-                OnSelectionChange();    
+                _treeSelector.SetValueWithoutNotify(tree);
             }
+            _treeView.PopulateView(tree);
         }
         
         
@@ -54,7 +63,7 @@ namespace FogFormer.Editor
                 return false;
             }
             var window = OpenWindow();
-            window._treeView.PopulateView(tree);
+            window.SelectTree(tree);
             return true;
         }
 
@@ -62,7 +71,7 @@ namespace FogFormer.Editor
         {
             if (Selection.activeObject is BehaviorTree tree)
             {
-                _treeView.PopulateView(tree);
+                SelectTree(tree);
             }
         }
 

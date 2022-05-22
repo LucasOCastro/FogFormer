@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <Style src="project://database/Assets/Editor/BehaviorTreeEditorWindow.uss?fileID=7433441132597879392&amp;guid=c82a8e57c8eb11d489b4010df04cbacc&amp;type=3#BehaviorTreeEditorWindow" />
     <uie:Toolbar>
-        <uie:ToolbarMenu display-tooltip-when-elided="true" text="Assets" />
+        <uie:ObjectField label="Current Tree" focusable="true" name="tree-selector" allow-scene-objects="false" style="width: 245px;" />
     </uie:Toolbar>
     <FogFormer.Editor.SplitView fixed-pane-initial-dimension="250">
         <ui:VisualElement name="left-panel">

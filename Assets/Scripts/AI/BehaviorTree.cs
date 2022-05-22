@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using FogFormer.AI.Nodes;
 
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -21,6 +20,13 @@ namespace FogFormer.AI
         public void Tick()
         {
             rootNode.Tick();
+        }
+
+        public BehaviorTree Clone()
+        {
+            var tree = Instantiate(this);
+            tree.rootNode = (RootNode)rootNode.Clone();
+            return tree;
         }
         
 #if UNITY_EDITOR

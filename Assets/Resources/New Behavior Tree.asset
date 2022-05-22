@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3486563458735106997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2938973923d4aa0826b67bc333ea434, type: 3}
+  m_Name: SequenceNode
+  m_EditorClassIdentifier: 
+  guid: 3cf9cb1e512813244b3e11b4b7c80e92
+  position: {x: 118, y: 0}
+  children: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,10 +27,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d33618045974b508789f9f945281b97, type: 3}
   m_Name: New Behavior Tree
   m_EditorClassIdentifier: 
-  rootNode: {fileID: 0}
+  rootNode: {fileID: 3732577060794749524}
   allNodes:
-  - {fileID: 5844523226651601227}
---- !u!114 &5844523226651601227
+  - {fileID: 3732577060794749524}
+  - {fileID: -3486563458735106997}
+--- !u!114 &3732577060794749524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -27,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0115c1f29e04249a7fc97f3b1858bad, type: 3}
   m_Name: RootNode
   m_EditorClassIdentifier: 
-  guid: 7dc235d4094bb5748a94a012403e1a3a
+  guid: b54c7bcdb644ffb42b48a599cce24a2f
   position: {x: 0, y: 0}
-  child: {fileID: 0}
+  child: {fileID: -3486563458735106997}

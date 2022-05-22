@@ -3,7 +3,7 @@ namespace FogFormer.AI.Nodes
 {
     public class WaitNode : LeafNode
     {
-        [SerializeField] private float seconds;
+        [SerializeField] private float seconds = 1;
         private float _timer;
         public override NodeState Tick()
         {
@@ -12,6 +12,7 @@ namespace FogFormer.AI.Nodes
                 _timer += Time.deltaTime;
                 return NodeState.Running;
             }
+            _timer = 0;
             return NodeState.Success;            
         }
     }

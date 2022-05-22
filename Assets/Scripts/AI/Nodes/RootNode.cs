@@ -11,5 +11,12 @@ namespace FogFormer.AI.Nodes
         {
             return child.Tick();
         }
+        
+        public override Node Clone()
+        {
+            var clone = Instantiate(this);
+            clone.child = child.Clone();
+            return clone;
+        }
     }
 }

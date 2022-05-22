@@ -37,12 +37,17 @@ namespace FogFormer.Editor
         public void PopulateView(BehaviorTree tree)
         {
             this.tree = tree;
-            BehaviorTreeEditorUtility.EnsureTreeHasRoot(tree);
-            
+
             graphViewChanged -= OnGraphViewChanged;
             DeleteElements(graphElements);
             graphViewChanged += OnGraphViewChanged;
             
+            if (tree == null)
+            {
+                return;
+            }
+            
+            BehaviorTreeEditorUtility.EnsureTreeHasRoot(tree);
             foreach (var node in tree.AllNodes)
             {
                 CreateNodeView(node);
