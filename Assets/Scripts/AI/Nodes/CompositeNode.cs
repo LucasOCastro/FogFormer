@@ -6,7 +6,7 @@ namespace FogFormer.AI.Nodes
 {
     public abstract class CompositeNode : Node
     {
-        [SerializeField] protected List<Node> children;
+        [SerializeField] protected List<Node> children = new List<Node>();
 
         private int _runningNodeIndex;
         protected void ReportRunning(int index)

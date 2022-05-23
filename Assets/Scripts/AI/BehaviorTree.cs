@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using FogFormer.AI.Nodes;
@@ -14,7 +15,6 @@ namespace FogFormer.AI
         
         [HideInInspector]
         [SerializeField] private RootNode rootNode;
-        [HideInInspector]
         [SerializeField] private List<Node> allNodes = new();
         public IEnumerable<Node> AllNodes => allNodes;
         public void Tick(BehaviorRunData data)
@@ -28,7 +28,7 @@ namespace FogFormer.AI
             tree.rootNode = (RootNode)rootNode.Clone();
             return tree;
         }
-        
+
 #if UNITY_EDITOR
         public Node CreateNode(System.Type type)
         {

@@ -2,24 +2,28 @@ using System.Collections.Generic;
 using System.Reflection;
 using FogFormer.AI;
 using FogFormer.AI.Nodes;
+using UnityEditor;
 using UnityEngine;
 
 namespace FogFormer.Editor
 {
     public static class BehaviorTreeEditorUtility
     {
-        private static readonly FieldInfo CompositeChildrenField = typeof(CompositeNode).GetField("children", BindingFlags.Instance | BindingFlags.NonPublic);
-        private static readonly FieldInfo DecoratorChildField = typeof(DecoratorNode).GetField("child", BindingFlags.Instance | BindingFlags.NonPublic);
-        private static readonly FieldInfo RootChildField = typeof(RootNode).GetField("child", BindingFlags.Instance | BindingFlags.NonPublic);
-        private static readonly FieldInfo TreeRootNodeField = typeof(BehaviorTree).GetField("rootNode", BindingFlags.Instance | BindingFlags.NonPublic);
+        private static FieldInfo CompositeChildrenField => typeof(CompositeNode).GetField("children", BindingFlags.Instance | BindingFlags.NonPublic);
+        private static FieldInfo DecoratorChildField => typeof(DecoratorNode).GetField("child", BindingFlags.Instance | BindingFlags.NonPublic);
+        private static FieldInfo RootChildField => typeof(RootNode).GetField("child", BindingFlags.Instance | BindingFlags.NonPublic);
+        private static FieldInfo TreeRootNodeField => typeof(BehaviorTree).GetField("rootNode", BindingFlags.Instance | BindingFlags.NonPublic);
         public static void AddChild(Node parent, Node child)
         {
             switch (parent)
             {
                 case CompositeNode composite:
                 {
-                    var childrenList = (List<Node>)CompositeChildrenField.GetValue(composite);
-                    childrenList.Add(child);
+                    var value = CompositeChildrenField.GetValue(composite);
+                    if (value is List<Node> childrenList)
+                    {
+                        childrenList.Add(child);
+                    }
                     break;
                 }
                 case DecoratorNode decorator:
@@ -33,6 +37,7 @@ namespace FogFormer.Editor
                     break;
                 }
             }
+            AssetDatabase.SaveAssets();
         }
 
         public static void RemoveChild(Node parent, Node child)
@@ -56,6 +61,7 @@ namespace FogFormer.Editor
                     break;
                 }
             }
+            AssetDatabase.SaveAssets();
         }
 
         public static IEnumerable<Node> GetChildren(Node node)
@@ -97,7 +103,9 @@ namespace FogFormer.Editor
             {
                 RootNode node = (RootNode)tree.CreateNode(typeof(RootNode));
                 TreeRootNodeField.SetValue(tree, node);
+                AssetDatabase.SaveAssets();
             }
+            
         }
     }
 }
