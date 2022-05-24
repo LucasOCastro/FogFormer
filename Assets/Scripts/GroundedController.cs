@@ -9,6 +9,7 @@ namespace FogFormer
     public class GroundedController : MonoBehaviour
     {
         [SerializeField] private LayerMask mask;
+        [SerializeField] private float castYOffset = 0;
         [SerializeField] private float castDistance = .1f;
         [SerializeField] private float sideCastOffset = .1f;
         
@@ -38,11 +39,25 @@ namespace FogFormer
         private IEnumerable<Vector2> GetCastOrigins()
         {
             var bounds = _collider.bounds;
-            float bottom = bounds.min.y;
+            float bottom = bounds.min.y + castYOffset;
             float centerX = bounds.center.x;
             yield return new Vector2(centerX, bottom);
             yield return new Vector2(centerX - sideCastOffset, bottom);
             yield return new Vector2(centerX + sideCastOffset, bottom);
+        }
+
+        public bool WouldBeGroundedAt(Vector2 position)
+        {
+            Vector2 offset = position - (Vector2)_collider.bounds.center;
+            foreach (var o in GetCastOrigins())
+            {
+                var cast = Physics2D.Raycast(o + offset, Vector2.down, castDistance, mask);
+                if (cast)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void UpdateGroundedStatus()
