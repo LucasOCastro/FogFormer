@@ -538,6 +538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mover: {fileID: 1072981744}
+  flipTransform: {fileID: 1072981742}
 --- !u!95 &437882750
 Animator:
   serializedVersion: 4
@@ -677,6 +678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mover: {fileID: 432477778}
+  flipTransform: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -14658,7 +14660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d809806309b64b1781ef6ccf0a06d917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 3.5
   horizontalDistanceTolerance: 0.15
   fallAvoidDistance: 0.5
 --- !u!50 &1072981745

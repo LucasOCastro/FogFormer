@@ -18,6 +18,18 @@ namespace FogFormer
         public virtual bool ReachedTarget => Target == (Vector2)transform.position;
         public virtual bool IsMoving => !ReachedTarget;
         public virtual bool CanReachTarget => true;
+
+        public virtual int Direction
+        {
+            get
+            {
+                float xDif = Target.x - transform.position.x;
+                if (xDif < 0) return -1;
+                return 1;
+            }
+        }
+        
+            
         protected abstract void MoveToTarget();
 
         protected virtual void Update()

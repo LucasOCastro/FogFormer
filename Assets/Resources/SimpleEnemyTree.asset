@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9200878175889333374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0115c1f29e04249a7fc97f3b1858bad, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  guid: 54b93b64d50c3af40a75f765591de1e2
+  position: {x: 0, y: 0}
+  child: {fileID: -7488008028451719788}
+--- !u!114 &-7488008028451719788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2938973923d4aa0826b67bc333ea434, type: 3}
+  m_Name: SequenceNode
+  m_EditorClassIdentifier: 
+  guid: 1d302186f3ba7bc49ad36ba3cc206160
+  position: {x: 138, y: 0}
+  children: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d33618045974b508789f9f945281b97, type: 3}
+  m_Name: SimpleEnemyTree
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: -9200878175889333374}
+  allNodes:
+  - {fileID: -9200878175889333374}
+  - {fileID: 3724507972125101530}
+  - {fileID: 2865237619818616635}
+  - {fileID: -7488008028451719788}
+--- !u!114 &2865237619818616635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af7c233e63e4dcc9f28009025f5cbe1, type: 3}
+  m_Name: MoveToTargetNode
+  m_EditorClassIdentifier: 
+  guid: 0c5b93fdd334e6a439d0c8278049a544
+  position: {x: 475.00003, y: 120}
+  targetIndex: 0
+--- !u!114 &3724507972125101530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1bf36c8d05a47d5a7b31942a6445281, type: 3}
+  m_Name: InRangeNode
+  m_EditorClassIdentifier: 
+  guid: 7ea6c64ac7d0f02438f1e732c2c497e2
+  position: {x: 488, y: 0}
+  range: 5
+  targetIndex: 0
