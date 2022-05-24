@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
 
 namespace FogFormer
 {
@@ -49,7 +45,7 @@ namespace FogFormer
             }
         }
 
-        private void LateUpdate()
+        private void FixedUpdate()
         {
             float velocityX = Mathf.MoveTowards(_rb.velocity.x, speed * MoveInput.x, VelocityDelta);
             if (!_grounded.IsGrounded)

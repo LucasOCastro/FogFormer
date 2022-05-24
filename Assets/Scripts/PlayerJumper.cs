@@ -49,7 +49,7 @@ namespace FogFormer
 
         private void Jump()
         {
-            _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
             _jumpQueued = false;
         }
         

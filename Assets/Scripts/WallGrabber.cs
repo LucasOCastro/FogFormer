@@ -100,9 +100,8 @@ namespace FogFormer
             
             float radAngle = Mathf.Deg2Rad * wallJumpAngle;
             Vector2 direction = new Vector2(Mathf.Cos(radAngle) * -_grabSign, Mathf.Sin(radAngle));
-            _rb.AddForce(direction * wallJumpForce, ForceMode2D.Impulse);
+            _rb.velocity = direction * wallJumpForce;
             SetGrab(0);
-            
         }
         
         private void Update()
