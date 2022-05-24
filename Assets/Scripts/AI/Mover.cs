@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace FogFormer.AI
+namespace FogFormer
 {
     public abstract class Mover : MonoBehaviour
     {
@@ -17,6 +16,8 @@ namespace FogFormer.AI
         }
 
         public virtual bool ReachedTarget => Target == (Vector2)transform.position;
+        public virtual bool IsMoving => !ReachedTarget;
+        public virtual bool CanReachTarget => true;
         protected abstract void MoveToTarget();
 
         protected virtual void Update()
@@ -25,6 +26,12 @@ namespace FogFormer.AI
             {
                 MoveToTarget();
             }
+            else ClearTarget();
+        }
+
+        public void ClearTarget()
+        {
+            Target = transform.position;
         }
     }
 }

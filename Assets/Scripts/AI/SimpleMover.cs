@@ -1,7 +1,7 @@
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
-namespace FogFormer.AI.Nodes
+namespace FogFormer
 {
     public class SimpleMover : Mover
     {

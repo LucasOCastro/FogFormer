@@ -21,6 +21,11 @@ namespace FogFormer.AI.Nodes
                 mover.SetTarget(target);
             }
 
+            if (!mover.CanReachTarget)
+            {
+                mover.ClearTarget();
+                return NodeState.Failure;
+            }
             return mover.ReachedTarget ? NodeState.Success : NodeState.Running;
         }
     }
