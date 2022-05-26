@@ -8,24 +8,24 @@ namespace FogFormer
     {
         private static readonly int Walking = Animator.StringToHash("walking");
 
-        [SerializeField] private Mover mover;
-        
+        private Mover _mover;
         private Animator _animator;
         private void Awake()
         {
             _animator = GetComponent<Animator>();
-            if (mover)
+            _mover = GetComponent<Mover>();
+            if (_mover)
             {
-                _lastDirection = mover.Direction;
+                _lastDirection = _mover.Direction;
             }
         }
 
         private int _lastDirection;
         private void Update()
         {
-            if (!mover) return;
+            if (!_mover) return;
             
-            _animator.SetBool(Walking, mover.IsMoving);
+            _animator.SetBool(Walking, _mover.IsMoving);
         }
     }
 }

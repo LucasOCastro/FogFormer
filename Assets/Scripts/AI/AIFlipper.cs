@@ -17,7 +17,7 @@ namespace FogFormer
             }
         }
         
-        private void SetFlip(int sign)
+        public void SetFlip(int sign)
         {
             if (sign != _lastDirection)
             {

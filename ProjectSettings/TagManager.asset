@@ -15,8 +15,8 @@ TagManager:
   - GameEnder
   - Scenario
   - Enemies
-  - Attack
-  - 
+  - EnemyAttack
+  - PlayerAttack
   - 
   - 
   - 

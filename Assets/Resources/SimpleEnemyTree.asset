@@ -49,7 +49,6 @@ MonoBehaviour:
   - {fileID: 3724507972125101530}
   - {fileID: 6398229678835583901}
   - {fileID: -1760614926073284840}
-  - {fileID: -1691504747088829893}
 --- !u!114 &-3580238144326646504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,21 +79,6 @@ MonoBehaviour:
   guid: 4334c34ccff97ad4e820bac05a6ef3d3
   position: {x: 406, y: 77}
   targetIndex: 0
---- !u!114 &-1691504747088829893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81fe8dc8df124154ba84dd40db98fc47, type: 3}
-  m_Name: WaitNode
-  m_EditorClassIdentifier: 
-  guid: bc40aecbbc695e84fa70085084222ac4
-  position: {x: 406, y: 154}
-  seconds: 1.5
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +97,6 @@ MonoBehaviour:
   - {fileID: 3724507972125101530}
   - {fileID: -7488008028451719788}
   - {fileID: -1760614926073284840}
-  - {fileID: -1691504747088829893}
   - {fileID: -3580238144326646504}
   - {fileID: -8588850655311526590}
   - {fileID: 6398229678835583901}
@@ -131,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guid: 7ea6c64ac7d0f02438f1e732c2c497e2
   position: {x: 406, y: -77}
-  range: 5
+  range: 10
   targetIndex: 0
 --- !u!114 &6398229678835583901
 MonoBehaviour:

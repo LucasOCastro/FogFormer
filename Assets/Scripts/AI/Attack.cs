@@ -12,8 +12,6 @@ namespace FogFormer
         [SerializeField] private DamageData damageData;
         [SerializeField] private Transform attackOrigin;
         [SerializeField] private bool faceTarget = true;
-        
-        public HealthManager CurrentTarget => _currentTarget;
 
         private int _animationHash;
 
@@ -33,28 +31,31 @@ namespace FogFormer
             return detectionColliders.Any(attackCol => attackCol.IsTouching(targetCol));
         }
 
-        private HealthManager _currentTarget;
-        public void Trigger(HealthManager target, Animator animator)
+        private bool _attacking;
+        public void Trigger(Animator animator, Transform target)
         {
-            _currentTarget = target;
-            animator.Play(_animationHash);
-            if (faceTarget && animator.TryGetComponent(out AIFlipper flipper))
+            _attacking = true;
+            if (animator != null)
             {
-                flipper.Face(target.transform.position);
+                animator.Play(_animationHash);    
+            }
+            if (faceTarget && target != null && animator.TryGetComponent(out AIFlipper flipper))
+            {
+                flipper.Face(target.position);
             }
         }
 
         public void End()
         {
-            _currentTarget = null;
+            _attacking = false;
         }
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (_currentTarget == null) return;
+            if (!_attacking) return;
 
             HealthManager colHealth = col.GetComponent<HealthManager>();
-            if (!colHealth || colHealth != _currentTarget) return;
+            if (!colHealth) return;
             
             damageData.ApplyDamage(colHealth, attackOrigin);
         }
