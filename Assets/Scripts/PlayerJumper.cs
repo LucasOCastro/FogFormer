@@ -34,18 +34,6 @@ namespace FogFormer
                 _jumpQueueTimer = 0;
             }
         }
-        
-        private float GetGravityScale()
-        {
-            if (_grounded.IsGrounded)
-            {
-                return groundGravity;
-            }
-            if (_rb.velocity.y <= 0) {
-                return fallGravity;
-            }
-            return Input.GetButton(jumpButton) ? longJumpGravity : jumpGravity;
-        }
 
         private void Jump()
         {
@@ -60,7 +48,6 @@ namespace FogFormer
             {
                 Jump();
             }
-            _rb.gravityScale = GetGravityScale();
         }
     }
 }

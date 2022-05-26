@@ -898,7 +898,7 @@ MonoBehaviour:
   damageData:
     damage: 2
     knockback: 2.5
-    knockbackAngle: 20
+    knockbackAngle: 25
     stunSeconds: 0.15
   attackOrigin: {fileID: 1072981742}
   faceTarget: 1
@@ -15805,6 +15805,7 @@ GameObject:
   - component: {fileID: 1785163911}
   - component: {fileID: 1785163915}
   - component: {fileID: 1785163917}
+  - component: {fileID: 1785163919}
   - component: {fileID: 1785163918}
   m_Layer: 6
   m_Name: Player
@@ -16105,6 +16106,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1785163919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785163906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1d2becd2494ab78f39c9ead21586a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpButton: Jump
+  groundGravity: 0
+  fallGravity: 2
+  jumpGravity: 1.8
+  longJumpGravity: 1
 --- !u!1 &1894824686
 GameObject:
   m_ObjectHideFlags: 0
