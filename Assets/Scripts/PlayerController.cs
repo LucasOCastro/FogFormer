@@ -3,7 +3,7 @@
 namespace FogFormer
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, IStunnable
     {
         [SerializeField] private float speed;
         [SerializeField] private float acceleration;
@@ -15,6 +15,8 @@ namespace FogFormer
 
         private Rigidbody2D _rb;
         private GroundedController _grounded;
+        
+        public bool IsStunned { get; set; }
 
         public Vector2 MoveInput { get; private set; }
         //Mathf.Sign is dumb
@@ -29,6 +31,11 @@ namespace FogFormer
 
         private void Update()
         {
+            if (IsStunned)
+            {
+                MoveInput = Vector2.zero;
+                return;
+            }
             MoveInput = new Vector2(Input.GetAxis(horizontalAxis), Input.GetAxis(verticalAxis));
             if (MoveInput.x != 0) LookDirection = InputDirection;
         }
@@ -54,7 +61,6 @@ namespace FogFormer
                 return;
             }
             _rb.velocity = -(_grounded.GroundSlope) * velocityX;
-            Debug.DrawRay(GetComponent<Collider2D>().bounds.CenterBottom(), -(_grounded.GroundSlope) * velocityX, Color.yellow);
         }
     }
     

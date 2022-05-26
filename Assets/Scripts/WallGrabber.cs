@@ -5,7 +5,7 @@ namespace FogFormer
 {
     //This is horrible
     [RequireComponent(typeof(PlayerController), typeof(GroundedController))]
-    public class WallGrabber : MonoBehaviour
+    public class WallGrabber : MonoBehaviour, IStunnable
     {
         [SerializeField] private float grabDistance;
         [SerializeField] private LayerMask mask;
@@ -22,6 +22,8 @@ namespace FogFormer
         [Header("Input")] 
         [SerializeField] private string releaseButton;
         [SerializeField] private string climbButton;
+        
+        public bool IsStunned { get; set; }
 
         public Action<bool> OnWallGrabUpdate;
         
@@ -97,7 +99,6 @@ namespace FogFormer
 
         private void WallJump()
         {
-            
             float radAngle = Mathf.Deg2Rad * wallJumpAngle;
             Vector2 direction = new Vector2(Mathf.Cos(radAngle) * -_grabSign, Mathf.Sin(radAngle));
             _rb.velocity = direction * wallJumpForce;
@@ -110,7 +111,7 @@ namespace FogFormer
             {
                 return;
             }
-            
+
             if (wallJumpButton != "" && Input.GetButtonDown(wallJumpButton))
             {
                 WallJump();
@@ -126,7 +127,7 @@ namespace FogFormer
         }
         private void FixedUpdate()
         {
-            if (_grounded.IsGrounded)
+            if (_grounded.IsGrounded || IsStunned)
             {
                 return;
             }

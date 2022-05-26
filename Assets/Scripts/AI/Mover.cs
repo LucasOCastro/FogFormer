@@ -2,8 +2,10 @@ using UnityEngine;
 
 namespace FogFormer
 {
-    public abstract class Mover : MonoBehaviour
+    public abstract class Mover : MonoBehaviour, IStunnable
     {
+        public bool IsStunned { get; set; }
+        
         protected bool _shouldMove;
         public Vector2 Target { get; protected set; }
         protected virtual void Awake()
@@ -40,7 +42,7 @@ namespace FogFormer
 
         protected virtual void Update()
         {
-            if (_shouldMove)
+            if (_shouldMove && !IsStunned)
             {
                 MoveToTarget();
             }

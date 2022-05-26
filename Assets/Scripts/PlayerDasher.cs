@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace FogFormer
 {
-    public class PlayerDasher : MonoBehaviour
+    public class PlayerDasher : MonoBehaviour, IStunnable
     {
         public System.Action OnDash;
         
@@ -14,6 +14,8 @@ namespace FogFormer
 
         [SerializeField] private ParticleSystem dashParticlePrefab;
         [SerializeField] private AudioClip dashAudio;
+        
+        public bool IsStunned { get; set; }
 
         private float _cooldownTimer;
             
@@ -69,7 +71,7 @@ namespace FogFormer
         private void Update()
         {
             _cooldownTimer -= Time.deltaTime;
-            if (_cooldownTimer <= 0 && Input.GetButtonDown(dashButton))
+            if (!IsStunned && _cooldownTimer <= 0 && Input.GetButtonDown(dashButton))
             {
                 TryDash();
             }

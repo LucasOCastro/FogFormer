@@ -3,7 +3,7 @@ using UnityEngine;
 namespace FogFormer
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(GroundedController))]
-    public class PlayerJumper : MonoBehaviour
+    public class PlayerJumper : MonoBehaviour, IStunnable
     {
         [SerializeField] private float jumpForce;
         [SerializeField] private float jumpQueueSeconds;
@@ -14,6 +14,8 @@ namespace FogFormer
         [SerializeField] private float fallGravity;
         [SerializeField] private float jumpGravity;
         [SerializeField] private float longJumpGravity;
+        
+        public bool IsStunned { get; set; }
 
         private Rigidbody2D _rb;
         private GroundedController _grounded;
@@ -41,7 +43,7 @@ namespace FogFormer
             _jumpQueued = false;
         }
         
-        private bool CanJump() => _jumpQueued && _jumpQueueTimer < jumpQueueSeconds && _grounded.IsGrounded;
+        private bool CanJump() => !IsStunned && _jumpQueued && _jumpQueueTimer < jumpQueueSeconds && _grounded.IsGrounded;
         private void FixedUpdate()
         {
             if (CanJump())

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace FogFormer
@@ -5,11 +6,13 @@ namespace FogFormer
     //This is honestly more of a PlayerFreezer or something like that
     public class StatusManager : MonoBehaviour
     {
-        //TEMP VERY TEMP
-        [SerializeField] private MonoBehaviour[] stunComponents;
-
         private bool _stunned;
         private float _stunSeconds, _stunTimer;
+        private IStunnable[] _stunnables;
+        private void Awake()
+        {
+            _stunnables = GetComponents<IStunnable>();
+        }
 
         public void PermaStun() => Stun(-1);
         public void Stun(float seconds)
@@ -18,9 +21,9 @@ namespace FogFormer
             _stunSeconds = seconds;
             _stunTimer = 0;
 
-            foreach (var comp in stunComponents)
+            foreach (var stunnable in _stunnables)
             {
-                comp.enabled = false;
+                stunnable.IsStunned = true;
             }
         }
 
@@ -29,9 +32,9 @@ namespace FogFormer
             if (!_stunned) return;
             
             _stunned = false;
-            foreach (var comp in stunComponents)
+            foreach (var stunnable in _stunnables)
             {
-                comp.enabled = true;
+                stunnable.IsStunned = false;
             }
         }
 

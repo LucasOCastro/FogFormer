@@ -6,13 +6,13 @@ namespace FogFormer
     public class PlayerFlipper : MonoBehaviour
     {
         private PlayerController _controller;
-        private WallGrabber _grabber;
         private void Awake()
         {
             _controller = GetComponent<PlayerController>();
-            _grabber = GetComponent<WallGrabber>();
             _lastLookDir = _controller.LookDirection;
         }
+
+        public int Direction => _lastLookDir;
 
         private int _lastLookDir;
         private void Update()
