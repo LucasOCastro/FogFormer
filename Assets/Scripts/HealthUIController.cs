@@ -29,11 +29,11 @@ namespace FogFormer
         
         private void OnEnable()
         {
-            healthManager.onDamage += OnDamage;
+            healthManager.OnDamage += OnDamage;
         }
         private void OnDisable()
         {
-            healthManager.onDamage -= OnDamage;
+            healthManager.OnDamage -= OnDamage;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace FogFormer
     public class HealthManager : MonoBehaviour
     {
         public delegate void HealthUpdateEvent(int before, int after);
-        public HealthUpdateEvent onDamage;
+        public HealthUpdateEvent OnDamage;
         
         [SerializeField] private int maxHealth;
         public int MaxHealth => maxHealth;
@@ -35,7 +35,7 @@ namespace FogFormer
         {
             int beforeHealth = _curHealth;
             Health -= damage;
-            onDamage?.Invoke(beforeHealth, Health);
+            OnDamage?.Invoke(beforeHealth, Health);
         }
 
         private void Die()

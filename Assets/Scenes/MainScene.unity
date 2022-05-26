@@ -244,6 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dasher: {fileID: 1785163917}
   wallGrabber: {fileID: 1785163915}
+  health: {fileID: 1785163913}
 --- !u!82 &47072569
 AudioSource:
   m_ObjectHideFlags: 0
@@ -485,7 +486,6 @@ MonoBehaviour:
     targets:
     - {fileID: 1233901719}
     - {fileID: 924124427}
-  runningNode: {fileID: 0}
 --- !u!114 &432477778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,7 +897,7 @@ MonoBehaviour:
   animationName: Kobold_Stab
   damageData:
     damage: 2
-    knockback: 2.5
+    knockback: 3
     knockbackAngle: 25
     stunSeconds: 0.15
   attackOrigin: {fileID: 1072981742}
@@ -14759,7 +14759,6 @@ MonoBehaviour:
     runner: {fileID: 0}
     targets:
     - {fileID: 1785163909}
-  runningNode: {fileID: 0}
 --- !u!114 &1072981744
 MonoBehaviour:
   m_ObjectHideFlags: 0
