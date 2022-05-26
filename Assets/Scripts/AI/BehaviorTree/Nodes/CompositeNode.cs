@@ -11,7 +11,6 @@ namespace FogFormer.AI.Nodes
         private int _runningNodeIndex;
         protected void ReportRunning(int index)
         {
-            BehaviorTreeRunner.ReportRunning(children[index]);
             _runningNodeIndex = index;
         }
 
