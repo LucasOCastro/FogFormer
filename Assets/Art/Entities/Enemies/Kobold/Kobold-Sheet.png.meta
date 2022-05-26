@@ -493,6 +493,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Kobold-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d09f2c642215ec429b66a1945d3ec9e
+      internalID: 942228745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -514,6 +535,7 @@ TextureImporter:
       Kobold-Sheet_9: -1362509439
       Kobold-Sheet_13: 585495626
       Kobold-Sheet_17: 1292991961
+      Kobold-Sheet_18: 942228745
       Kobold-Sheet_8: 1771757254
       Kobold-Sheet_14: 1390723944
       Kobold-Sheet_3: -1081296079

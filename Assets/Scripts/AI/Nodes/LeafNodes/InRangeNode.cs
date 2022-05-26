@@ -6,6 +6,7 @@ namespace FogFormer.AI.Nodes
     {
         [SerializeField] private float range;
         [SerializeField] private int targetIndex;
+        
         public override NodeState Tick(BehaviorRunData data)
         {
             Vector2 target = data.targets[targetIndex].position;

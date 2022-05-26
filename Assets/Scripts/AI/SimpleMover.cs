@@ -11,5 +11,9 @@ namespace FogFormer
         {
             transform.position = Vector2.MoveTowards(transform.position, Target, speed * Time.deltaTime);
         }
+
+        public override bool HasReachedTarget(float distance = 0) => (Target - (Vector2)transform.position).sqrMagnitude <= distance * distance;
+
+        public override bool CanReachTarget => true;
     }
 }

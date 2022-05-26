@@ -3,30 +3,41 @@ using UnityEngine;
 
 namespace FogFormer.AI.Nodes
 {
-    public class MoveToTargetNode : LeafNode
+    public class MoveToTargetNode : ComplexLeafNode
     {
-        [SerializeField] private int targetIndex;
-        public override NodeState Tick(BehaviorRunData data)
-        {
-            if (targetIndex < 0 || targetIndex >= data.targets.Length)
-            {
-                throw new ArgumentOutOfRangeException(nameof(targetIndex));
-            }
-            
-            var mover = data.runner.GetComponent<Mover>();
-            
-            Vector2 target = data.targets[targetIndex].position;
-            if (mover.Target != target)
-            {
-                mover.SetTarget(target);
-            }
+        //I should probably move this onto a base class?
+        [SerializeField] protected int targetIndex;
+        [SerializeField] private float distance;
 
-            if (!mover.CanReachTarget)
+        private Mover _mover;
+        protected override NodeState OnStart(BehaviorRunData data)
+        {
+            if (_mover == null && !data.runner.TryGetComponent(out _mover))
             {
-                mover.ClearTarget();
                 return NodeState.Failure;
             }
-            return mover.ReachedTarget ? NodeState.Success : NodeState.Running;
+            
+            Vector2 target = data.targets[targetIndex].position;
+            _mover.SetTarget(target);
+            return NodeState.Running;
+        }
+
+        protected override NodeState OnTick(BehaviorRunData data)
+        {
+            if (!_mover.CanReachTarget)
+            {
+                return NodeState.Failure;
+            }
+            if (_mover.HasReachedTarget(distance))
+            {
+                return NodeState.Success;
+            }
+            return NodeState.Running;
+        }
+
+        protected override void OnEnd(BehaviorRunData data)
+        {
+            _mover.ClearTarget();
         }
     }
 }

@@ -9,8 +9,7 @@ namespace FogFormer
         private static readonly int Walking = Animator.StringToHash("walking");
 
         [SerializeField] private Mover mover;
-        [SerializeField] private Transform flipTransform;
-
+        
         private Animator _animator;
         private void Awake()
         {
@@ -27,19 +26,6 @@ namespace FogFormer
             if (!mover) return;
             
             _animator.SetBool(Walking, mover.IsMoving);
-
-            if (flipTransform)
-            {
-                int direction = mover.Direction;
-                if (direction != _lastDirection)
-                {
-                    Vector2 scale = flipTransform.localScale;
-                    scale.x *= -1;
-                    flipTransform.localScale = scale;
-                }
-                _lastDirection = direction;
-            }
-            
         }
     }
 }

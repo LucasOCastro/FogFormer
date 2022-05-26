@@ -4,21 +4,28 @@ namespace FogFormer
 {
     public abstract class Mover : MonoBehaviour
     {
+        protected bool _shouldMove;
         public Vector2 Target { get; protected set; }
         protected virtual void Awake()
         {
-            Target = transform.position;
+            ClearTarget();
         }
 
-        public virtual void SetTarget(Vector2 newTarget)
+        public void SetTarget(Vector2 newTarget)
         {
             Target = newTarget;
+            _shouldMove = true;
+        }
+        public void ClearTarget()
+        {
+            Target = transform.position;
+            _shouldMove = false;
         }
 
-        public virtual bool ReachedTarget => Target == (Vector2)transform.position;
-        public virtual bool IsMoving => !ReachedTarget;
-        public virtual bool CanReachTarget => true;
-
+        public abstract bool HasReachedTarget(float distance = 0);
+        public abstract bool CanReachTarget { get; }
+        public virtual bool IsMoving => _shouldMove;
+        
         public virtual int Direction
         {
             get
@@ -28,22 +35,17 @@ namespace FogFormer
                 return 1;
             }
         }
-        
-            
+
         protected abstract void MoveToTarget();
 
         protected virtual void Update()
         {
-            if (!ReachedTarget)
+            if (_shouldMove)
             {
                 MoveToTarget();
             }
-            else ClearTarget();
         }
 
-        public void ClearTarget()
-        {
-            Target = transform.position;
-        }
+        
     }
 }

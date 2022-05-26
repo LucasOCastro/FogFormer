@@ -15,6 +15,21 @@ MonoBehaviour:
   guid: 54b93b64d50c3af40a75f765591de1e2
   position: {x: 0, y: 0}
   child: {fileID: -7488008028451719788}
+--- !u!114 &-8588850655311526590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2abcbb1740b49d59a4d8d9a5b8dfa90, type: 3}
+  m_Name: InverterNode
+  m_EditorClassIdentifier: 
+  guid: 788ae1031bc9c9047ab45ae89687b622
+  position: {x: 406, y: -154}
+  child: {fileID: -3580238144326646504}
 --- !u!114 &-7488008028451719788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28,8 +43,58 @@ MonoBehaviour:
   m_Name: SequenceNode
   m_EditorClassIdentifier: 
   guid: 1d302186f3ba7bc49ad36ba3cc206160
-  position: {x: 138, y: 0}
-  children: []
+  position: {x: 153, y: 0}
+  children:
+  - {fileID: -8588850655311526590}
+  - {fileID: 3724507972125101530}
+  - {fileID: 6398229678835583901}
+  - {fileID: -1760614926073284840}
+  - {fileID: -1691504747088829893}
+--- !u!114 &-3580238144326646504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28dd1856e5b649edaabc67efe6e0ebec, type: 3}
+  m_Name: IsDeadNode
+  m_EditorClassIdentifier: 
+  guid: 76e300a5a8ac547489bd70d2ed1bfae3
+  position: {x: 578, y: -154}
+  targetIndex: 0
+--- !u!114 &-1760614926073284840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79aab01b6f0c4e15abdb4a3f4253877a, type: 3}
+  m_Name: AttackNode
+  m_EditorClassIdentifier: 
+  guid: 4334c34ccff97ad4e820bac05a6ef3d3
+  position: {x: 406, y: 77}
+  targetIndex: 0
+--- !u!114 &-1691504747088829893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81fe8dc8df124154ba84dd40db98fc47, type: 3}
+  m_Name: WaitNode
+  m_EditorClassIdentifier: 
+  guid: bc40aecbbc695e84fa70085084222ac4
+  position: {x: 406, y: 154}
+  seconds: 1.5
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,23 +111,12 @@ MonoBehaviour:
   allNodes:
   - {fileID: -9200878175889333374}
   - {fileID: 3724507972125101530}
-  - {fileID: 2865237619818616635}
   - {fileID: -7488008028451719788}
---- !u!114 &2865237619818616635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3af7c233e63e4dcc9f28009025f5cbe1, type: 3}
-  m_Name: MoveToTargetNode
-  m_EditorClassIdentifier: 
-  guid: 0c5b93fdd334e6a439d0c8278049a544
-  position: {x: 475.00003, y: 120}
-  targetIndex: 0
+  - {fileID: -1760614926073284840}
+  - {fileID: -1691504747088829893}
+  - {fileID: -3580238144326646504}
+  - {fileID: -8588850655311526590}
+  - {fileID: 6398229678835583901}
 --- !u!114 &3724507972125101530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +130,22 @@ MonoBehaviour:
   m_Name: InRangeNode
   m_EditorClassIdentifier: 
   guid: 7ea6c64ac7d0f02438f1e732c2c497e2
-  position: {x: 488, y: 0}
+  position: {x: 406, y: -77}
   range: 5
   targetIndex: 0
+--- !u!114 &6398229678835583901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ba116fa8004627b2bbe57da62d4a0e, type: 3}
+  m_Name: WalkUntilCanAttackNode
+  m_EditorClassIdentifier: 
+  guid: 1505a94eec88c6a479a3d5a27e52e383
+  position: {x: 406, y: 0}
+  targetIndex: 0
+  distance: 0.25
