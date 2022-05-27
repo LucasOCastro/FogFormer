@@ -12,23 +12,42 @@ namespace FogFormer
 
         public bool IsStunned { get; set; }
         
+        public bool IsAttacking { get; private set; }
+
+        private Rigidbody2D _rb;
+        private HealthManager _health;
+        private void Awake()
+        {
+            _rb = GetComponent<Rigidbody2D>();
+            _health = GetComponent<HealthManager>();
+            _health.OnDamage += OnAttackEnd;
+        }
+
         private void Update()
         {
             if (IsStunned) return;
             
             if (Input.GetButtonDown(attackButton))
             {
-                Attack();    
+                Attack();
             }
         }
 
         //AnimatorEvent
-        private void OnAttackEnd() => attack.End();
+        private void OnAttackEnd()
+        {
+            if (!IsAttacking) return;
+            attack.End();
+            IsAttacking = false;
+            _rb.constraints ^= RigidbodyConstraints2D.FreezePosition;
+        } 
 
         private void Attack()
         {
+            IsAttacking = true;
             OnAttack?.Invoke();
             attack.Trigger(null, null);
+            _rb.constraints |= RigidbodyConstraints2D.FreezePosition;
         }
     }
 }

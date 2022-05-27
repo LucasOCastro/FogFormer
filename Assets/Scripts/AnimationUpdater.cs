@@ -24,7 +24,7 @@ namespace FogFormer
             _attacker = GetComponent<PlayerAttacker>();
         }
 
-        private void OnDamage(int before, int after) => _animator.SetTrigger(Hurt);
+        private void OnDamage() => _animator.SetTrigger(Hurt);
         private void OnAttack() => _animator.SetTrigger(Slash);
 
         private void UpdateWallGrab(bool grabbing) => _animator.SetBool(Hanging, grabbing);

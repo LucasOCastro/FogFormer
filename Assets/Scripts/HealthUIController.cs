@@ -9,6 +9,7 @@ namespace FogFormer
         [SerializeField] private HealthManager healthManager;
         [SerializeField] private GameObject healthIconPrefab;
 
+        private int _activeCount;
         private List<GameObject> _instantiatedIcons = new List<GameObject>();
         private void Awake()
         {
@@ -17,14 +18,16 @@ namespace FogFormer
                 GameObject icon = Instantiate(healthIconPrefab, this.transform);
                 _instantiatedIcons.Add(icon);
             }
+            _activeCount = healthManager.MaxHealth;
         }
         
-        private void OnDamage(int before, int after)
+        private void OnDamage()
         {
-            for (int i = after; i < before; i++)
+            for (int i = healthManager.Health; i < _activeCount; i++)
             {
                 _instantiatedIcons[i].SetActive(false);
             }
+            _activeCount = healthManager.Health;
         }
         
         private void OnEnable()
