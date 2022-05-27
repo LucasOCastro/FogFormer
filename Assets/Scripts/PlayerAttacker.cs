@@ -15,12 +15,12 @@ namespace FogFormer
         public bool IsAttacking { get; private set; }
 
         private Rigidbody2D _rb;
-        private HealthManager _health;
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _health = GetComponent<HealthManager>();
-            _health.OnDamage += OnAttackEnd;
+            
+            HealthManager health = GetComponent<HealthManager>();
+            health.OnDamage += OnAttackEnd;
         }
 
         private void Update()

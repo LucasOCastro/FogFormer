@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace FogFormer
 {
@@ -19,10 +20,20 @@ namespace FogFormer
         [SerializeField] private float stunSeconds;
         public float StunSeconds => stunSeconds;
 
+        [SerializeField] private ParticleSystem damageParticlePrefab;
+
         public void ApplyDamage(HealthManager health, Transform damager)
         {
             //TEMP VERY TEMP EWW
             health.Damage(damage);
+
+            if (damageParticlePrefab != null)
+            {
+                Vector2 pos = health.transform.position;
+                Vector2 direction = Vector2.right * Mathf.Sign(pos.x - damager.position.x);
+                Quaternion rotation = Quaternion.LookRotation(Vector3.up, direction);
+                Object.Instantiate(damageParticlePrefab, pos, rotation);
+            }
 
             if (stunSeconds > 0 && health.TryGetComponent<StatusManager>(out var status))
             {
