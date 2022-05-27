@@ -46,6 +46,11 @@ namespace FogFormer
             {
                 MoveToTarget();
             }
+
+            if (HasReachedTarget())
+            {
+                ClearTarget();
+            }
         }
 
         

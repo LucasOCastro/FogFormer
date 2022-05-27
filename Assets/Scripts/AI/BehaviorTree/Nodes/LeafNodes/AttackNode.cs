@@ -5,6 +5,7 @@ namespace FogFormer.AI.Nodes
     public class AttackNode : ComplexLeafNode
     {
         [SerializeField] private int targetIndex;
+        [SerializeField] private bool stopMovement = true;
 
         private AIAttacker _attacker;
         private HealthManager _target;
@@ -21,7 +22,16 @@ namespace FogFormer.AI.Nodes
                 return NodeState.Failure;
             }
 
-            return _attacker.TryTriggerValidAttack(_target) ? NodeState.Running : NodeState.Failure;
+            if (!_attacker.TryTriggerValidAttack(_target))
+            {
+                return NodeState.Failure;
+            }
+
+            if (stopMovement && _attacker.TryGetComponent(out Mover mover))
+            {
+                mover.ClearTarget();
+            }
+            return NodeState.Running;
         }
 
         protected override NodeState OnTick(BehaviorRunData data)
@@ -29,7 +39,7 @@ namespace FogFormer.AI.Nodes
             return _attacker.IsAttacking ? NodeState.Running : NodeState.Success;
         }
 
-        protected override void OnEnd(BehaviorRunData data)
+        protected override void OnEnd(BehaviorRunData data, NodeState endState)
         {
         }
     }

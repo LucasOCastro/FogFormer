@@ -35,7 +35,7 @@ namespace FogFormer.AI.Nodes
             return NodeState.Running;
         }
 
-        protected override void OnEnd(BehaviorRunData data)
+        protected override void OnEnd(BehaviorRunData data, NodeState endState)
         {
             _mover.ClearTarget();
         }

@@ -16,13 +16,13 @@ namespace FogFormer.AI.Nodes
             if (runState != NodeState.Running)
             {
                 _running = false;
-                OnEnd(data);
+                OnEnd(data, runState);
             }
             return runState;
         }
 
         protected abstract NodeState OnTick(BehaviorRunData data);
         protected abstract NodeState OnStart(BehaviorRunData data);
-        protected abstract void OnEnd(BehaviorRunData data);
+        protected abstract void OnEnd(BehaviorRunData data, NodeState endState);
     }
 }

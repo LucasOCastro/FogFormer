@@ -30,6 +30,21 @@ MonoBehaviour:
   guid: 788ae1031bc9c9047ab45ae89687b622
   position: {x: 406, y: -154}
   child: {fileID: -3580238144326646504}
+--- !u!114 &-8426063243582330886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79aab01b6f0c4e15abdb4a3f4253877a, type: 3}
+  m_Name: AttackNode
+  m_EditorClassIdentifier: 
+  guid: d30c3c6ccb1cb194aa072490c0869baa
+  position: {x: 712.4502, y: -77.000015}
+  targetIndex: 0
 --- !u!114 &-7488008028451719788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,9 +62,41 @@ MonoBehaviour:
   children:
   - {fileID: -8588850655311526590}
   - {fileID: 3724507972125101530}
-  - {fileID: 6398229678835583901}
-  - {fileID: -1760614926073284840}
+  - {fileID: -5320863144051327467}
+--- !u!114 &-6497693730576440835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2938973923d4aa0826b67bc333ea434, type: 3}
+  m_Name: SequenceNode
+  m_EditorClassIdentifier: 
+  guid: 1bd033ec8447bf84b959e6446565260f
+  position: {x: 553.4502, y: -0.0000047683716}
+  children:
+  - {fileID: -8426063243582330886}
   - {fileID: 2554612790205238079}
+--- !u!114 &-5320863144051327467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512066bb064c4d468e4d6501b221367f, type: 3}
+  m_Name: SelectorNode
+  m_EditorClassIdentifier: 
+  guid: 5779cb4b5213be640a0e34e132cb10a5
+  position: {x: 406, y: 0.0000076293945}
+  children:
+  - {fileID: 1339356274026048822}
+  - {fileID: -6497693730576440835}
 --- !u!114 &-3580238144326646504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,22 +110,7 @@ MonoBehaviour:
   m_Name: IsDeadNode
   m_EditorClassIdentifier: 
   guid: 76e300a5a8ac547489bd70d2ed1bfae3
-  position: {x: 578, y: -154}
-  targetIndex: 0
---- !u!114 &-1760614926073284840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79aab01b6f0c4e15abdb4a3f4253877a, type: 3}
-  m_Name: AttackNode
-  m_EditorClassIdentifier: 
-  guid: 4334c34ccff97ad4e820bac05a6ef3d3
-  position: {x: 406, y: 77}
+  position: {x: 529, y: -153.99998}
   targetIndex: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -97,11 +129,44 @@ MonoBehaviour:
   - {fileID: -9200878175889333374}
   - {fileID: 3724507972125101530}
   - {fileID: -7488008028451719788}
-  - {fileID: -1760614926073284840}
   - {fileID: -3580238144326646504}
   - {fileID: -8588850655311526590}
-  - {fileID: 6398229678835583901}
   - {fileID: 2554612790205238079}
+  - {fileID: 1339356274026048822}
+  - {fileID: -5320863144051327467}
+  - {fileID: -8426063243582330886}
+  - {fileID: -6497693730576440835}
+  - {fileID: 655994319612922656}
+--- !u!114 &655994319612922656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a7e3b0f81344b54b8ee2477d2ec5f45, type: 3}
+  m_Name: StopMovementNode
+  m_EditorClassIdentifier: 
+  guid: 7d358d5aed56bc5478987bd2e9e3d1b4
+  position: {x: 0, y: 0}
+--- !u!114 &1339356274026048822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da12c1563f6d48acaac7b63aca9d7061, type: 3}
+  m_Name: ApproachTargetNode
+  m_EditorClassIdentifier: 
+  guid: 56e7bf5e5ac15384d9c2e7192377d08a
+  position: {x: 553.4502, y: 76.99999}
+  targetIndex: 0
+  distance: 0
 --- !u!114 &2554612790205238079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +180,7 @@ MonoBehaviour:
   m_Name: WaitNode
   m_EditorClassIdentifier: 
   guid: 9bd5e08f7fb5c0848aba7864244c5779
-  position: {x: 406, y: 153.99998}
+  position: {x: 712.4502, y: -0.0000047683716}
   seconds: 0.2
 --- !u!114 &3724507972125101530
 MonoBehaviour:
@@ -133,19 +198,3 @@ MonoBehaviour:
   position: {x: 406, y: -77}
   range: 10
   targetIndex: 0
---- !u!114 &6398229678835583901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04ba116fa8004627b2bbe57da62d4a0e, type: 3}
-  m_Name: WalkUntilCanAttackNode
-  m_EditorClassIdentifier: 
-  guid: 1505a94eec88c6a479a3d5a27e52e383
-  position: {x: 406, y: 0}
-  targetIndex: 0
-  distance: 0.25
