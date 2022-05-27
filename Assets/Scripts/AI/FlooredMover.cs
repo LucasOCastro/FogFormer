@@ -3,7 +3,7 @@ using UnityEngine;
 namespace FogFormer.AI
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(FlooredMover))]
-    public class FlooredMover : Mover
+    public class FlooredMover : TargetedMover
     {
         [SerializeField] private float speed;
         [SerializeField] private float fallAvoidDistance;

@@ -12,6 +12,7 @@ namespace FogFormer.AI.Nodes
                 return NodeState.Failure;
             }
             var health = data.targets[targetIndex].GetComponent<HealthManager>();
+            if (health)
             if (health != null && health.Health == 0)
             {
                 return NodeState.Success;

@@ -14,13 +14,8 @@ namespace FogFormer
         {
             _animator = GetComponent<Animator>();
             _mover = GetComponent<Mover>();
-            if (_mover)
-            {
-                _lastDirection = _mover.Direction;
-            }
         }
 
-        private int _lastDirection;
         private void Update()
         {
             if (!_mover) return;

@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Name: AttackNode
   m_EditorClassIdentifier: 
   guid: d30c3c6ccb1cb194aa072490c0869baa
-  position: {x: 712.4502, y: -77.000015}
+  position: {x: 712, y: -115.5}
   targetIndex: 0
+  stopMovement: 1
 --- !u!114 &-7488008028451719788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,9 +77,10 @@ MonoBehaviour:
   m_Name: SequenceNode
   m_EditorClassIdentifier: 
   guid: 1bd033ec8447bf84b959e6446565260f
-  position: {x: 553.4502, y: -0.0000047683716}
+  position: {x: 553, y: 0}
   children:
   - {fileID: -8426063243582330886}
+  - {fileID: 655994319612922656}
   - {fileID: 2554612790205238079}
 --- !u!114 &-5320863144051327467
 MonoBehaviour:
@@ -95,8 +97,8 @@ MonoBehaviour:
   guid: 5779cb4b5213be640a0e34e132cb10a5
   position: {x: 406, y: 0.0000076293945}
   children:
-  - {fileID: 1339356274026048822}
   - {fileID: -6497693730576440835}
+  - {fileID: 1339356274026048822}
 --- !u!114 &-3580238144326646504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +152,7 @@ MonoBehaviour:
   m_Name: StopMovementNode
   m_EditorClassIdentifier: 
   guid: 7d358d5aed56bc5478987bd2e9e3d1b4
-  position: {x: 0, y: 0}
+  position: {x: 712, y: -38}
 --- !u!114 &1339356274026048822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +166,7 @@ MonoBehaviour:
   m_Name: ApproachTargetNode
   m_EditorClassIdentifier: 
   guid: 56e7bf5e5ac15384d9c2e7192377d08a
-  position: {x: 553.4502, y: 76.99999}
+  position: {x: 553, y: 128}
   targetIndex: 0
   distance: 0
 --- !u!114 &2554612790205238079
@@ -180,7 +182,7 @@ MonoBehaviour:
   m_Name: WaitNode
   m_EditorClassIdentifier: 
   guid: 9bd5e08f7fb5c0848aba7864244c5779
-  position: {x: 712.4502, y: -0.0000047683716}
+  position: {x: 712, y: 38.5}
   seconds: 0.2
 --- !u!114 &3724507972125101530
 MonoBehaviour:

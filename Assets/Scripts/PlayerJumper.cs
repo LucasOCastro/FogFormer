@@ -17,13 +17,13 @@ namespace FogFormer
         
         public bool IsStunned { get; set; }
 
-        private Rigidbody2D _rb;
+        private PlayerController _controller;
         private GroundedController _grounded;
         private bool _jumpQueued;
         private float _jumpQueueTimer;
         private void Awake()
         {
-            _rb = GetComponent<Rigidbody2D>();
+            _controller = GetComponent<PlayerController>();
             _grounded = GetComponent<GroundedController>();
         }
         
@@ -39,7 +39,7 @@ namespace FogFormer
 
         private void Jump()
         {
-            _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
+            _controller.AddForce(Vector2.up * jumpForce);
             _jumpQueued = false;
         }
         

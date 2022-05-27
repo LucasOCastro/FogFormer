@@ -3,7 +3,7 @@
 namespace FogFormer
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class PlayerController : MonoBehaviour, IStunnable
+    public class PlayerController : Mover
     {
         [SerializeField] private float speed;
         [SerializeField] private float acceleration;
@@ -16,12 +16,12 @@ namespace FogFormer
         private Rigidbody2D _rb;
         private GroundedController _grounded;
         
-        public bool IsStunned { get; set; }
-
         public Vector2 MoveInput { get; private set; }
         //Mathf.Sign is dumb
-        public int InputDirection => MoveInput.x < 0 ? -1 : (MoveInput.x > 0 ? 1 : 0);
+        public override int MoveDirection => MoveInput.x < 0 ? -1 : (MoveInput.x > 0 ? 1 : 0);
         public int LookDirection { get; private set; } = 1;
+
+        public override bool IsMoving => !IsStunned && MoveInput.x != 0;
 
         private void Awake()
         {
@@ -37,7 +37,7 @@ namespace FogFormer
                 return;
             }
             MoveInput = new Vector2(Input.GetAxis(horizontalAxis), Input.GetAxis(verticalAxis));
-            if (MoveInput.x != 0) LookDirection = InputDirection;
+            if (MoveInput.x != 0) LookDirection = MoveDirection;
         }
 
         private float VelocityDelta
@@ -52,8 +52,21 @@ namespace FogFormer
             }
         }
 
+        private Vector2 _forceToApply;
+
         private void FixedUpdate()
         {
+            if (_forceToApply != Vector2.zero)
+            {
+                _rb.velocity += _forceToApply;
+                _forceToApply = Vector2.zero;
+                return;
+            }
+            
+            if (IsStunned)
+            {
+                return;
+            }
             float velocityX = Mathf.MoveTowards(_rb.velocity.x, speed * MoveInput.x, VelocityDelta);
             if (!_grounded.IsGrounded)
             {
@@ -61,6 +74,11 @@ namespace FogFormer
                 return;
             }
             _rb.velocity = -(_grounded.GroundSlope) * velocityX;
+        }
+
+        public void AddForce(Vector2 force)
+        {
+            _forceToApply += force;
         }
     }
     

@@ -3,7 +3,7 @@ using Vector2 = UnityEngine.Vector2;
 
 namespace FogFormer
 {
-    public class SimpleMover : Mover
+    public class SimpleMover : TargetedMover
     {
         [SerializeField] private float speed;
         

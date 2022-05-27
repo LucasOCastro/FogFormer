@@ -9,7 +9,7 @@ namespace FogFormer.AI.Nodes
         [SerializeField] protected int targetIndex;
         [SerializeField] private float distance;
 
-        private Mover _mover;
+        private TargetedMover _mover;
         protected override NodeState OnStart(BehaviorRunData data)
         {
             if (_mover == null && !data.runner.TryGetComponent(out _mover))

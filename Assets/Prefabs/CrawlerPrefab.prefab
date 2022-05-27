@@ -114,7 +114,9 @@ GameObject:
   - component: {fileID: 4943406712026808214}
   - component: {fileID: 4943406712026808213}
   - component: {fileID: 4943406712026808212}
+  - component: {fileID: 6124827917396795906}
   - component: {fileID: 4943406712026808211}
+  - component: {fileID: 4911605686872818327}
   m_Layer: 9
   m_Name: Crawler
   m_TagString: Untagged
@@ -183,6 +185,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
+--- !u!114 &6124827917396795906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943406712026808203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df0e10d6ba43430d9b0202bc2cb2a3bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!70 &4943406712026808211
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -199,6 +213,26 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.07799858}
   m_Size: {x: 0.694993, y: 0.9090017}
   m_Direction: 0
+--- !u!95 &4911605686872818327
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943406712026808203}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fab945433d0486f4c97de578f18e6ba1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4943406712077642258
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,8 +243,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4943406712077642257}
   - component: {fileID: 4943406712077642256}
-  - component: {fileID: 4943406712077642271}
-  - component: {fileID: 4943406712077642270}
   m_Layer: 9
   m_Name: CrawlerSprite
   m_TagString: Untagged
@@ -285,38 +317,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &4943406712077642271
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4943406712077642258}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fab945433d0486f4c97de578f18e6ba1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4943406712077642270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4943406712077642258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df0e10d6ba43430d9b0202bc2cb2a3bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4943406712459734221
 GameObject:
   m_ObjectHideFlags: 0

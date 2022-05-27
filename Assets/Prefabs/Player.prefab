@@ -16,14 +16,14 @@ GameObject:
   - component: {fileID: 4092116779021317907}
   - component: {fileID: 4092116779021317911}
   - component: {fileID: 4092116779021317912}
-  - component: {fileID: 4092116779021317916}
-  - component: {fileID: 4092116779021317915}
   - component: {fileID: 4092116779021317917}
+  - component: {fileID: 4092116779021317915}
   - component: {fileID: 4092116779021317919}
   - component: {fileID: 4092116779021317918}
   - component: {fileID: 4092116779021317888}
   - component: {fileID: 4092116779021317890}
   - component: {fileID: 4092116779021317889}
+  - component: {fileID: 7681412926788967744}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -166,7 +166,7 @@ MonoBehaviour:
   castYOffset: 0
   castDistance: 0.03
   sideCastOffset: 0.1
---- !u!114 &4092116779021317916
+--- !u!114 &4092116779021317917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,9 +175,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 4092116779021317906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe100dbab38c4e529586c6f066e6cd1f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cbdf00cde394a9ba4f29ed5c2b33989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashDistance: 1.5
+  dashButton: Dash
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 256
+  cooldownSeconds: 1.8
+  dashParticlePrefab: {fileID: 782230278607041917, guid: da39e6fceff3f4c479e380de79f2dd5e,
+    type: 3}
+  dashAudio: {fileID: 8300000, guid: 02a3f1509acdde943b4bc988a6984e60, type: 3}
 --- !u!114 &4092116779021317915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,27 +211,6 @@ MonoBehaviour:
   wallJumpButton: Jump
   releaseButton: ReleaseLedge
   climbButton: ClimbLedge
---- !u!114 &4092116779021317917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4092116779021317906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cbdf00cde394a9ba4f29ed5c2b33989, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashDistance: 1.5
-  dashButton: Dash
-  collisionMask:
-    serializedVersion: 2
-    m_Bits: 256
-  cooldownSeconds: 1.8
-  dashParticlePrefab: {fileID: 782230278607041917, guid: da39e6fceff3f4c479e380de79f2dd5e,
-    type: 3}
-  dashAudio: {fileID: 8300000, guid: 02a3f1509acdde943b4bc988a6984e60, type: 3}
 --- !u!114 &4092116779021317919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,6 +370,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1e09f090e8452699ba3430b5aeaf90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7681412926788967744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4092116779021317906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc57adbcf9af446392b24afd0762824a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mover: {fileID: 4092116779021317907}
 --- !u!1 &4092116780223649873
 GameObject:
   m_ObjectHideFlags: 0

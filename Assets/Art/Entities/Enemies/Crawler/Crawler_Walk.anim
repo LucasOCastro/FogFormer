@@ -24,9 +24,9 @@ AnimationClip:
     - time: 0.16666667
       value: {fileID: 1709085329, guid: 83d8ae1d496583c40a481c8f22b5c5a6, type: 3}
     - time: 0.33333334
-      value: {fileID: 1709085329, guid: 83d8ae1d496583c40a481c8f22b5c5a6, type: 3}
+      value: {fileID: 1506265678, guid: 83d8ae1d496583c40a481c8f22b5c5a6, type: 3}
     attribute: m_Sprite
-    path: 
+    path: CrawlerSprite
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -37,7 +37,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 0
+      path: 2555725299
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -46,7 +46,7 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: 1506265678, guid: 83d8ae1d496583c40a481c8f22b5c5a6, type: 3}
     - {fileID: 1709085329, guid: 83d8ae1d496583c40a481c8f22b5c5a6, type: 3}
-    - {fileID: 1709085329, guid: 83d8ae1d496583c40a481c8f22b5c5a6, type: 3}
+    - {fileID: 1506265678, guid: 83d8ae1d496583c40a481c8f22b5c5a6, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

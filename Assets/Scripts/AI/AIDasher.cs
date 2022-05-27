@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace FogFormer
 {
-    [RequireComponent(typeof(Rigidbody2D), typeof(AIFlipper))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(DirectionManager))]
     public class AIDasher : MonoBehaviour
     {
-        private AIFlipper _flipper;
+        private DirectionManager _flipper;
         private Rigidbody2D _rb;
         private void Awake()
         {
-            _flipper = GetComponent<AIFlipper>();
+            _flipper = GetComponent<DirectionManager>();
             _rb = GetComponent<Rigidbody2D>();
         }
         

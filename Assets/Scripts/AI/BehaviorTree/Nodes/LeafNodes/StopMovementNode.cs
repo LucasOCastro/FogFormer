@@ -4,7 +4,7 @@ namespace FogFormer.AI.Nodes
     {
         public override NodeState Tick(BehaviorRunData data)
         {
-            Mover mover = data.runner.GetComponent<Mover>();
+            TargetedMover mover = data.runner.GetComponent<TargetedMover>();
             if (mover == null)
             {
                 return NodeState.Failure;

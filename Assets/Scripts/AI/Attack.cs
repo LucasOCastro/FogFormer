@@ -39,7 +39,7 @@ namespace FogFormer
             {
                 animator.Play(_animationHash);    
             }
-            if (faceTarget && target != null && animator.TryGetComponent(out AIFlipper flipper))
+            if (faceTarget && target != null && animator.TryGetComponent(out DirectionManager flipper))
             {
                 flipper.Face(target.position);
             }

@@ -67,7 +67,7 @@ namespace FogFormer
 
         private void TryGrab()
         {
-            int xSign = _controller.InputDirection;
+            int xSign = _controller.MoveDirection;
             if (xSign == 0) return;
             
             Vector2 origin = (xSign < 0) ? _collider.bounds.CenterLeft() : _collider.bounds.CenterRight();

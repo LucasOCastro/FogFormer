@@ -27,7 +27,7 @@ namespace FogFormer.AI.Nodes
                 return NodeState.Failure;
             }
 
-            if (stopMovement && _attacker.TryGetComponent(out Mover mover))
+            if (stopMovement && _attacker.TryGetComponent(out TargetedMover mover))
             {
                 mover.ClearTarget();
             }

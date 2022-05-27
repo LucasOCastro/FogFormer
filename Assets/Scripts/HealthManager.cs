@@ -40,7 +40,7 @@ namespace FogFormer
         {
             _curHealth = 0;
             //TEMP
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

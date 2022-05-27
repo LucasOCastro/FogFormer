@@ -2,18 +2,18 @@ using UnityEngine;
 
 namespace FogFormer
 {
-    public class AIFlipper : MonoBehaviour
+    public class DirectionManager : MonoBehaviour
     {
         [SerializeField] private Mover mover;
 
         public int Direction => _lastDirection;
         
-        private int _lastDirection;
+        private int _lastDirection = 1;
         private void Update()
         {
             if (mover != null && mover.IsMoving)
             {
-                SetFlip(mover.Direction);
+                SetFlip(mover.MoveDirection);
             }
         }
         
