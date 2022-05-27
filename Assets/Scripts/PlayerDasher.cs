@@ -17,6 +17,8 @@ namespace FogFormer
         
         public bool IsStunned { get; set; }
 
+        public float DashCooldownProgress => Mathf.Clamp01(_cooldownTimer / cooldownSeconds);
+
         private float _cooldownTimer;
             
         private PlayerController _controller;
@@ -29,6 +31,7 @@ namespace FogFormer
             _collider = GetComponent<Collider2D>();
             _rb = GetComponent<Rigidbody2D>();
             _audio = GetComponent<AudioSource>();
+            _cooldownTimer = cooldownSeconds;
         }
 
         private Vector2 GetEndPos(int directionSign)
@@ -63,15 +66,15 @@ namespace FogFormer
             }
             
             _rb.MovePosition(GetEndPos(lookDirection));
-            _cooldownTimer = cooldownSeconds;
+            _cooldownTimer = 0;
             OnDash?.Invoke();
             PlayDashEffects();
         }
 
         private void Update()
         {
-            _cooldownTimer -= Time.deltaTime;
-            if (!IsStunned && _cooldownTimer <= 0 && Input.GetButtonDown(dashButton))
+            _cooldownTimer += Time.deltaTime;
+            if (!IsStunned && _cooldownTimer > cooldownSeconds && Input.GetButtonDown(dashButton))
             {
                 TryDash();
             }

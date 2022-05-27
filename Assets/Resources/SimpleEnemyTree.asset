@@ -49,6 +49,7 @@ MonoBehaviour:
   - {fileID: 3724507972125101530}
   - {fileID: 6398229678835583901}
   - {fileID: -1760614926073284840}
+  - {fileID: 2554612790205238079}
 --- !u!114 &-3580238144326646504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +101,22 @@ MonoBehaviour:
   - {fileID: -3580238144326646504}
   - {fileID: -8588850655311526590}
   - {fileID: 6398229678835583901}
+  - {fileID: 2554612790205238079}
+--- !u!114 &2554612790205238079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81fe8dc8df124154ba84dd40db98fc47, type: 3}
+  m_Name: WaitNode
+  m_EditorClassIdentifier: 
+  guid: 9bd5e08f7fb5c0848aba7864244c5779
+  position: {x: 406, y: 153.99998}
+  seconds: 0.2
 --- !u!114 &3724507972125101530
 MonoBehaviour:
   m_ObjectHideFlags: 0
