@@ -6,6 +6,7 @@ namespace FogFormer
     public class HealthManager : MonoBehaviour
     {
         public Action OnDamage;
+        public Action OnHeal;
         
         [SerializeField] private int maxHealth;
         public int MaxHealth => maxHealth;
@@ -41,6 +42,12 @@ namespace FogFormer
             _curHealth = 0;
             //TEMP
             gameObject.SetActive(false);
+        }
+
+        public void Heal(int healAmount)
+        {
+            Health += healAmount;
+            OnHeal?.Invoke();
         }
     }
 }

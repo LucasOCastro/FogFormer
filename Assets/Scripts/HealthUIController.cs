@@ -29,14 +29,27 @@ namespace FogFormer
             }
             _activeCount = healthManager.Health;
         }
+        private void OnHeal()
+        {
+            for (int i = _activeCount; i < healthManager.Health; i++)
+            {
+                _instantiatedIcons[i].SetActive(true);
+            }
+            _activeCount = healthManager.Health;
+        }
         
         private void OnEnable()
         {
             healthManager.OnDamage += OnDamage;
+            healthManager.OnHeal += OnHeal;
         }
+
+        
+
         private void OnDisable()
         {
             healthManager.OnDamage -= OnDamage;
+            healthManager.OnHeal -= OnHeal;
         }
     }
 }
