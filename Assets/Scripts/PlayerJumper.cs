@@ -10,12 +10,6 @@ namespace FogFormer
         [SerializeField] private float jumpQueueSeconds;
         [SerializeField] private string jumpButton = "Jump";
 
-        [Header("Gravity")] 
-        [SerializeField] private float groundGravity;
-        [SerializeField] private float fallGravity;
-        [SerializeField] private float jumpGravity;
-        [SerializeField] private float longJumpGravity;
-        
         public bool IsStunned { get; set; }
 
         private PlayerController _controller;

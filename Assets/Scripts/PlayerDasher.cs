@@ -5,8 +5,9 @@ namespace FogFormer
     public class PlayerDasher : MonoBehaviour, IStunnable
     {
         public System.Action OnDash;
-        
+
         [SerializeField] private float dashDistance;
+        [SerializeField] private float longDashDistance;
         [SerializeField] private string dashButton;
         [SerializeField] LayerMask collisionMask;
 
@@ -39,14 +40,15 @@ namespace FogFormer
             Vector2 direction = (directionSign < 0) ? Vector2.left : Vector2.right;
             Bounds bounds = _collider.bounds;
             Vector2 castOrigin = (Vector2)bounds.center + (direction * bounds.extents.x);
-            var cast = Physics2D.Raycast(castOrigin, direction, dashDistance, collisionMask);
+            float distance = _controller.MoveInput.x != 0 ? longDashDistance : dashDistance;
+            var cast = Physics2D.Raycast(castOrigin, direction, distance, collisionMask);
 
             if (cast)
             {
                 Vector2 endPos = cast.point - direction * bounds.extents.x;
                 return Mathf.Approximately(endPos.x, castOrigin.x) ? bounds.center : endPos;
             }
-            return castOrigin + direction * dashDistance;
+            return castOrigin + direction * distance;
         }
 
         private void PlayDashEffects()

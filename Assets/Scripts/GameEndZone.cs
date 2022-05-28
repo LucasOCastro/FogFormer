@@ -4,11 +4,21 @@ namespace FogFormer
 {
     public class GameEndZone : MonoBehaviour
     {
-        [SerializeField] private GameManager gameManager;
+        private enum EndType { Tutorial, FinalLevel }
+        [SerializeField] private EndType type;
+        
         //TODO temp
         private void OnTriggerEnter2D(Collider2D col)
         {
-            gameManager.EndLevel();
+            switch (type)
+            {
+                case EndType.FinalLevel:
+                    GameManager.EndLevel();
+                    break;
+                case EndType.Tutorial:
+                    GameManager.LoadMainLevel();
+                    break;
+            }
         }
     }
 }
