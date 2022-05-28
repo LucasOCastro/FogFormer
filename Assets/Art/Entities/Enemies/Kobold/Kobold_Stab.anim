@@ -196,7 +196,7 @@ AnimationClip:
     functionName: DashForwards
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 5
+    floatParameter: 6
     intParameter: 0
     messageOptions: 0
   - time: 0.9166667

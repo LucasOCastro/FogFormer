@@ -7,6 +7,7 @@ namespace FogFormer
     {
         public Action OnDamage;
         public Action OnHeal;
+        public Action OnDeath;
         
         [SerializeField] private int maxHealth;
         public int MaxHealth => maxHealth;
@@ -17,10 +18,13 @@ namespace FogFormer
             get => _curHealth; 
             private set
             {
-                _curHealth = Mathf.Clamp(value, 0, maxHealth);
+                int newHealth = Mathf.Clamp(value, 0, maxHealth);
+                if (newHealth == _curHealth) return;
+                
+                _curHealth = newHealth;
                 if (_curHealth == 0)
                 {
-                    Die();
+                    Death();
                 }
             }
         }
@@ -37,11 +41,11 @@ namespace FogFormer
             OnDamage?.Invoke();
         }
 
-        private void Die()
+        private void Death()
         {
-            _curHealth = 0;
             //TEMP
             gameObject.SetActive(false);
+            OnDeath?.Invoke();
         }
 
         public void Heal(int healAmount)
