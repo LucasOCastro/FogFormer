@@ -23,17 +23,20 @@ namespace FogFormer
             _collider = GetComponent<Collider2D>();
         }
 
-        
+#if UNITY_EDITOR
         private void Update()
         {
-            UpdateGroundedStatus();
-#if UNITY_EDITOR
             foreach (var o in GetCastOrigins())
             {
                 Debug.DrawRay( o, Vector2.down * castDistance, IsGrounded ? Color.green : Color.red);
             }
             //Debug.DrawRay(_collider.bounds.CenterBottom(), GroundSlope * 2.5f, Color.yellow);
+        }
 #endif
+
+        private void FixedUpdate()
+        {
+            UpdateGroundedStatus();
         }
 
         private IEnumerable<Vector2> GetCastOrigins()

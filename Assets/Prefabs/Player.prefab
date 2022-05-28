@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 6.5
-  jumpQueueSeconds: 0.2
+  jumpQueueSeconds: 0.36
   jumpButton: Jump
   groundGravity: 0
   fallGravity: 2
@@ -164,7 +164,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   castYOffset: 0
-  castDistance: 0.03
+  castDistance: 0.01
   sideCastOffset: 0.1
 --- !u!114 &4092116779021317917
 MonoBehaviour:

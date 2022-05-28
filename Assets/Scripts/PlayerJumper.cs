@@ -1,3 +1,4 @@
+using System.Reflection;
 using UnityEngine;
 
 namespace FogFormer
@@ -39,6 +40,7 @@ namespace FogFormer
 
         private void Jump()
         {
+            //typeof(GroundedController).GetProperty("IsGrounded", BindingFlags.Instance | BindingFlags.Public).SetValue(_grounded, false);
             _controller.AddForce(Vector2.up * jumpForce);
             _jumpQueued = false;
         }

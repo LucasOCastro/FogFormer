@@ -81,5 +81,5 @@ namespace FogFormer
             _forceToApply += force;
         }
     }
-    
+
 }
