@@ -481,10 +481,10 @@ RectTransform:
   m_Father: {fileID: 1811679965}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 75.240204}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 137}
+  m_SizeDelta: {x: 244, y: 75.240204}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &770082032
 MonoBehaviour:
@@ -14356,7 +14356,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.7099644, y: 1}
+    m_SensorSize: {x: 1.8576512, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -15979,10 +15979,10 @@ RectTransform:
   m_Father: {fileID: 1894824690}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 138.48}
-  m_SizeDelta: {x: -800, y: -288.46}
+  m_SizeDelta: {x: 244, y: 273.54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1811679966
 MonoBehaviour:
@@ -16263,6 +16263,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4092116780223649875, guid: e4ee6820c913fdc4b8d7bc8e4a4c028b,
+        type: 3}
+      propertyPath: damageData.knockback
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4ee6820c913fdc4b8d7bc8e4a4c028b, type: 3}
 --- !u!1 &4092116780793481105 stripped
@@ -16426,6 +16431,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Kobold
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114044606676025599, guid: 25597e04a91129f43aa4cf0eeebd8477,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114044606676025599, guid: 25597e04a91129f43aa4cf0eeebd8477,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114044606676025599, guid: 25597e04a91129f43aa4cf0eeebd8477,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25597e04a91129f43aa4cf0eeebd8477, type: 3}
