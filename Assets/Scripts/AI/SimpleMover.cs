@@ -14,6 +14,10 @@ namespace FogFormer
 
         public override bool HasReachedTarget(float distance = 0) => (Target - (Vector2)transform.position).sqrMagnitude <= distance * distance;
 
+        public override void SetVelocity(Vector2 velocity)
+        {
+        }
+
         public override bool CanReachTarget => true;
     }
 }

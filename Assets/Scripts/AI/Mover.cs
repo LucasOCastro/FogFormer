@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace FogFormer
@@ -8,5 +9,7 @@ namespace FogFormer
         
         public abstract bool IsMoving { get; }
         public abstract int MoveDirection { get; }
+
+        public abstract void SetVelocity(Vector2 velocity);
     }
 }

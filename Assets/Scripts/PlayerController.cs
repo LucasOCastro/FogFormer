@@ -23,6 +23,8 @@ namespace FogFormer
 
         public override bool IsMoving => !IsStunned && MoveInput.x != 0;
 
+        public Vector2 Velocity => _rb.velocity;
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
@@ -53,12 +55,16 @@ namespace FogFormer
         }
 
         private Vector2 _forceToApply;
+        private Vector2 _velocityToSet;
 
         private void FixedUpdate()
         {
-            if (_forceToApply != Vector2.zero)
+            if (_velocityToSet != Vector2.zero) _rb.velocity = _velocityToSet;
+            else if (_forceToApply != Vector2.zero) _rb.velocity += _forceToApply;
+
+            if (_velocityToSet != Vector2.zero || _forceToApply != Vector2.zero)
             {
-                _rb.velocity += _forceToApply;
+                _velocityToSet = Vector2.zero;
                 _forceToApply = Vector2.zero;
                 return;
             }
@@ -76,9 +82,9 @@ namespace FogFormer
             _rb.velocity = -(_grounded.GroundSlope) * velocityX;
         }
 
-        public void AddForce(Vector2 force)
+        public override void SetVelocity(Vector2 velocity)
         {
-            _forceToApply += force;
+            _velocityToSet = velocity;
         }
     }
 

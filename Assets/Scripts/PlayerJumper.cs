@@ -34,8 +34,7 @@ namespace FogFormer
 
         private void Jump()
         {
-            //typeof(GroundedController).GetProperty("IsGrounded", BindingFlags.Instance | BindingFlags.Public).SetValue(_grounded, false);
-            _controller.AddForce(Vector2.up * jumpForce);
+            _controller.SetVelocity(new Vector2(_controller.Velocity.x, jumpForce));
             _jumpQueued = false;
         }
         

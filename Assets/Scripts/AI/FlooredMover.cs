@@ -17,6 +17,11 @@ namespace FogFormer.AI
             _rb = GetComponent<Rigidbody2D>();
         }
 
+        public override void SetVelocity(Vector2 velocity)
+        {
+            _rb.velocity = velocity;
+        }
+
         public override bool IsMoving => base.IsMoving && _grounded.IsGrounded;
 
         public override bool HasReachedTarget(float distance = 0) => Mathf.Abs(Target.x - _rb.position.x) <= distance;
