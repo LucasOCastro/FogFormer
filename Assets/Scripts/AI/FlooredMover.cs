@@ -24,7 +24,7 @@ namespace FogFormer.AI
 
         public override bool IsMoving => base.IsMoving && _grounded.IsGrounded;
 
-        public override bool HasReachedTarget(float distance = 0) => Mathf.Abs(Target.x - _rb.position.x) <= distance;
+        public override bool HasReachedTarget() => Mathf.Approximately(Target.x, _rb.position.x);
         public override bool CanReachTarget
         {
             get

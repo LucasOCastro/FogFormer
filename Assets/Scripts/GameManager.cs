@@ -7,9 +7,10 @@ namespace FogFormer
     {
         //A lot of unpleasant practices here :(
         [SerializeField] private string playerTag = "Player";
-        [SerializeField] private int gameSceneIndex;
-        [SerializeField] private int endSceneIndex;
-        [SerializeField] private int tutorialSceneIndex;
+        [SerializeField] private int tutorialSceneIndex = 0;
+        [SerializeField] private int gameSceneIndex = 1;
+        [SerializeField] private int endSceneIndex = 2;
+        
         
         public static GameManager Instance { get; private set; }
         public GameObject Player { get; private set; }

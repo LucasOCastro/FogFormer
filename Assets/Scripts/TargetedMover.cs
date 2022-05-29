@@ -23,7 +23,7 @@ namespace FogFormer
             _shouldMove = false;
         }
 
-        public abstract bool HasReachedTarget(float distance = 0);
+        public abstract bool HasReachedTarget();
         public abstract bool CanReachTarget { get; }
         public override bool IsMoving => _shouldMove;
         

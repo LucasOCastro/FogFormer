@@ -7,7 +7,6 @@ namespace FogFormer.AI.Nodes
     {
         //I should probably move this onto a base class?
         [SerializeField] protected int targetIndex;
-        [SerializeField] private float distance;
 
         private TargetedMover _mover;
         protected override NodeState OnStart(BehaviorRunData data)
@@ -28,7 +27,7 @@ namespace FogFormer.AI.Nodes
             {
                 return NodeState.Failure;
             }
-            if (_mover.HasReachedTarget(distance))
+            if (_mover.HasReachedTarget())
             {
                 return NodeState.Success;
             }

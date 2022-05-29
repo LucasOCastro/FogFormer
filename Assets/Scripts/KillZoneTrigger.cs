@@ -15,7 +15,8 @@ namespace FogFormer
         private void OnEnable()
         {
             Collider2D colliders = GetComponent<Collider2D>();
-            GetTargetsInCollider(colliders);
+            if (colliders != null)
+                GetTargetsInCollider(colliders);
             _aliveCount = targets.Count;
 
             foreach (HealthManager target in targets)
