@@ -212,8 +212,8 @@ MonoBehaviour:
   tree: {fileID: 11400000, guid: 522dcd0f11d154f4d9c4073c314dcc7d, type: 2}
   data:
     runner: {fileID: 0}
-    targets:
-    - {fileID: 0}
+    targets: []
+  assignPlayerAsTarget0: 1
 --- !u!95 &5114044606224312688
 Animator:
   serializedVersion: 4

@@ -12,8 +12,7 @@ namespace FogFormer
         [SerializeField] private int tutorialSceneIndex;
         
         public static GameManager Instance { get; private set; }
-
-        private GameObject _player;
+        public GameObject Player { get; private set; }
         private DeathUI _deathUI;
         private void Awake()
         {
@@ -25,11 +24,12 @@ namespace FogFormer
             Instance = this;
             DontDestroyOnLoad(gameObject);
             
-            _player = GameObject.FindWithTag(playerTag);
-            if (_player != null)
+            //Dumb repetition
+            Player = GameObject.FindWithTag(playerTag);
+            if (Player != null)
             {
                 _deathUI = FindObjectOfType<DeathUI>(true);
-                HealthManager health = _player.GetComponent<HealthManager>();
+                HealthManager health = Player.GetComponent<HealthManager>();
                 health.OnDeath += OnPlayerDeath;
             }
             else _deathUI = null;
@@ -39,11 +39,11 @@ namespace FogFormer
         {
             SceneManager.LoadScene(index);
             
-            _player = GameObject.FindWithTag(playerTag);
-            if (_player != null)
+            Player = GameObject.FindWithTag(playerTag);
+            if (Player != null)
             {
                 _deathUI = FindObjectOfType<DeathUI>(true);
-                HealthManager health = _player.GetComponent<HealthManager>();
+                HealthManager health = Player.GetComponent<HealthManager>();
                 health.OnDeath += OnPlayerDeath;
             }
             else _deathUI = null;
