@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace FogFormer
@@ -30,11 +28,10 @@ namespace FogFormer
             {
                 Debug.DrawRay( o, Vector2.down * castDistance, IsGrounded ? Color.green : Color.red);
             }
-            //Debug.DrawRay(_collider.bounds.CenterBottom(), GroundSlope * 2.5f, Color.yellow);
         }
 #endif
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
             UpdateGroundedStatus();
         }

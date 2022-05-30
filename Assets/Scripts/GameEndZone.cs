@@ -7,7 +7,6 @@ namespace FogFormer
         private enum EndType { Tutorial, FinalLevel }
         [SerializeField] private EndType type;
         
-        //TODO temp
         private void OnTriggerEnter2D(Collider2D col)
         {
             switch (type)

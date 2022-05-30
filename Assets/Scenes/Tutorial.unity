@@ -352,7 +352,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Aperte Z para atacar
+  m_Text: Aperte Q para atacar
 --- !u!222 &372048911
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -891,46 +891,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerGroup
       objectReference: {fileID: 0}
-    - target: {fileID: 2254714637001639896, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2254714637001639896, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2254714637001639896, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 122
-      objectReference: {fileID: 0}
-    - target: {fileID: 2254714637001639896, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -60.519226
-      objectReference: {fileID: 0}
-    - target: {fileID: 4126453440289904581, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4126453440289904581, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4126453440289904581, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 122
-      objectReference: {fileID: 0}
-    - target: {fileID: 4126453440289904581, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -20.173075
-      objectReference: {fileID: 0}
     - target: {fileID: 5887877353647187726, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -960,11 +920,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.128252
-      objectReference: {fileID: 0}
-    - target: {fileID: 5963689375537933671, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6139841248166577134, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
         type: 3}

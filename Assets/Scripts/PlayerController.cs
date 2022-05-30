@@ -54,18 +54,13 @@ namespace FogFormer
             }
         }
 
-        private Vector2 _forceToApply;
         private Vector2 _velocityToSet;
-
         private void FixedUpdate()
         {
-            if (_velocityToSet != Vector2.zero) _rb.velocity = _velocityToSet;
-            else if (_forceToApply != Vector2.zero) _rb.velocity += _forceToApply;
-
-            if (_velocityToSet != Vector2.zero || _forceToApply != Vector2.zero)
+            if (_velocityToSet != Vector2.zero)
             {
+                _rb.velocity = _velocityToSet;
                 _velocityToSet = Vector2.zero;
-                _forceToApply = Vector2.zero;
                 return;
             }
             

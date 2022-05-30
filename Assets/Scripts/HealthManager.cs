@@ -33,8 +33,7 @@ namespace FogFormer
         {
             _curHealth = maxHealth;
         }
-
-        //TEMPP
+        
         public void Damage(int damage)
         {
             Health -= damage;
@@ -43,7 +42,6 @@ namespace FogFormer
 
         private void Death()
         {
-            //TEMP
             gameObject.SetActive(false);
             OnDeath?.Invoke();
         }

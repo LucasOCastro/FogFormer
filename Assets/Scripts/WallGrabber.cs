@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace FogFormer
 {
-    //This is horrible
     [RequireComponent(typeof(PlayerController), typeof(GroundedController))]
     public class WallGrabber : MonoBehaviour, IStunnable
     {
@@ -83,9 +82,7 @@ namespace FogFormer
                 }
             }
         }
-
-        //TEMP
-        //Needs refactoring
+        
         private void TryClimb()
         {
             if (!_grabbedLedge)

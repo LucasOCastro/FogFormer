@@ -37,7 +37,7 @@ namespace FogFormer
             _controller.SetVelocity(new Vector2(_controller.Velocity.x, jumpForce));
             _jumpQueued = false;
         }
-        
+
         private bool CanJump() => !IsStunned && _jumpQueued && _jumpQueueTimer < jumpQueueSeconds && _grounded.IsGrounded;
         private void FixedUpdate()
         {

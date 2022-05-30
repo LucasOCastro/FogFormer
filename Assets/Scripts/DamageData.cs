@@ -24,7 +24,6 @@ namespace FogFormer
 
         public void ApplyDamage(HealthManager health, Transform damager)
         {
-            //TEMP VERY TEMP EWW
             health.Damage(damage);
 
             if (damageParticlePrefab != null)
@@ -43,20 +42,10 @@ namespace FogFormer
             if (knockback != 0 && health.TryGetComponent<Mover>(out var mover))
             {
                 float xDif = Mathf.Sign(mover.transform.position.x - damager.position.x);
-                //EVEN MORE TEMP
                 float radAngle = Mathf.Deg2Rad * knockbackAngle;
                 Vector2 dir = new Vector2(Mathf.Cos(radAngle) * xDif, Mathf.Sin(radAngle));
                 mover.SetVelocity(dir * knockback);
             }
-            
-            /*if (knockback != 0 && health.TryGetComponent<Rigidbody2D>(out var rb) )
-            {
-                float xDif = Mathf.Sign(rb.position.x - damager.position.x);
-                //EVEN MORE TEMP
-                float radAngle = Mathf.Deg2Rad * knockbackAngle;
-                Vector2 dir = new Vector2(Mathf.Cos(radAngle) * xDif, Mathf.Sin(radAngle));
-                rb.velocity = dir * knockback;
-            }*/
         }
     }
 }

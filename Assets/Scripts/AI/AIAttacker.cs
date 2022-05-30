@@ -5,7 +5,6 @@ namespace FogFormer
 {
     public class AIAttacker : MonoBehaviour, IStunnable
     {
-        //TODO cooldowns?
         [SerializeField] private Attack[] attacks;
         [SerializeField] private Animator animator;
         
