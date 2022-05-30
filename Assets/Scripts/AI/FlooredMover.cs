@@ -5,7 +5,7 @@ namespace FogFormer.AI
     [RequireComponent(typeof(Rigidbody2D), typeof(FlooredMover))]
     public class FlooredMover : TargetedMover
     {
-        [SerializeField] private float speed;
+        [SerializeField] private float speed, turnSeconds;
         [SerializeField] private float fallAvoidDistance;
         
         private GroundedController _grounded;
@@ -15,6 +15,7 @@ namespace FogFormer.AI
             base.Awake();
             _grounded = GetComponent<GroundedController>();
             _rb = GetComponent<Rigidbody2D>();
+            _dir = GetComponent<DirectionManager>().Direction;
         }
 
         public override void SetVelocity(Vector2 velocity)
@@ -22,7 +23,7 @@ namespace FogFormer.AI
             _rb.velocity = velocity;
         }
 
-        public override bool IsMoving => base.IsMoving && _grounded.IsGrounded;
+        public override bool IsMoving => base.IsMoving && _grounded.IsGrounded && _dir == TargetDir;
 
         public override bool HasReachedTarget() => Mathf.Approximately(Target.x, _rb.position.x);
         public override bool CanReachTarget
@@ -35,6 +36,12 @@ namespace FogFormer.AI
             }
         }
 
+        public override int MoveDirection => _dir;
+        
+        private int TargetDir => (Target.x < _rb.position.x) ? -1 : 1;
+
+        private float _turnTimer;
+        private int _dir;
         //This would really be better with a surface system but no time
         protected override void MoveToTarget()
         {
@@ -43,13 +50,24 @@ namespace FogFormer.AI
                 return;
             }
 
-            Vector2 position = _rb.position;
-            Vector2 direction = Mathf.Sign(Target.x - position.x) * -_grounded.GroundSlope;
             if (!CanReachTarget)
             {
                 return;
             }
-            _rb.position = position + (direction * speed * Time.deltaTime);
+
+            int targetDir = TargetDir;
+            if (_dir != targetDir)
+            {
+                _turnTimer += Time.deltaTime;
+                if (_turnTimer < turnSeconds)
+                {
+                    return;
+                }
+            }
+
+            _dir = targetDir;
+            _turnTimer = 0;
+            _rb.position += Vector2.right * _dir * speed * Time.deltaTime;
         }
     }
 }
