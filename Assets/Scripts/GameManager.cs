@@ -13,8 +13,26 @@ namespace FogFormer
         
         
         public static GameManager Instance { get; private set; }
-        public GameObject Player { get; private set; }
-        private DeathUI _deathUI;
+
+        private GameObject _player;
+
+        public GameObject Player
+        {
+            get
+            {
+                if (_player == null)
+                {
+                    _player = GameObject.FindWithTag(playerTag);
+                }
+                if (_player != null)
+                {
+                    var health = _player.GetComponent<HealthManager>();
+                    health.OnDeath += OnPlayerDeath;
+                }
+                return _player;
+            } 
+        }
+
         private void Awake()
         {
             if (Instance != null)
@@ -24,35 +42,17 @@ namespace FogFormer
             }
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            
-            //Dumb repetition
-            Player = GameObject.FindWithTag(playerTag);
-            if (Player != null)
-            {
-                _deathUI = FindObjectOfType<DeathUI>(true);
-                HealthManager health = Player.GetComponent<HealthManager>();
-                health.OnDeath += OnPlayerDeath;
-            }
-            else _deathUI = null;
         }
 
         private void LoadScene(int index)
         {
             SceneManager.LoadScene(index);
-            
-            Player = GameObject.FindWithTag(playerTag);
-            if (Player != null)
-            {
-                _deathUI = FindObjectOfType<DeathUI>(true);
-                HealthManager health = Player.GetComponent<HealthManager>();
-                health.OnDeath += OnPlayerDeath;
-            }
-            else _deathUI = null;
         }
 
         private void OnPlayerDeath()
         {
-            _deathUI.gameObject.SetActive(true);
+            var deathUI = FindObjectOfType<DeathUI>(true);
+            deathUI.gameObject.SetActive(true);
         }
 
         public static void RestartScene() => Instance.LoadScene(SceneManager.GetActiveScene().buildIndex);
