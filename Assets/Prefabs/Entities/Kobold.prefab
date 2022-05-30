@@ -75,8 +75,8 @@ MonoBehaviour:
   animationName: Kobold_Stab
   damageData:
     damage: 2
-    knockback: 3
-    knockbackAngle: 25
+    knockback: 5
+    knockbackAngle: 45
     stunSeconds: 0.15
     damageParticlePrefab: {fileID: 0}
   attackOrigin: {fileID: 5114044606224312685}

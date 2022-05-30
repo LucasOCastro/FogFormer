@@ -13,7 +13,7 @@ namespace FogFormer
         [SerializeField] private float knockback;
         public float Knockback => knockback;
         
-        [Range(0,90)]
+        [Range(0,180)]
         [SerializeField] private float knockbackAngle;
         public float KnockbackAngle => knockbackAngle;
         
