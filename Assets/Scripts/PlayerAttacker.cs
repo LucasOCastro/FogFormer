@@ -39,7 +39,6 @@ namespace FogFormer
             if (!IsAttacking) return;
             attack.End();
             IsAttacking = false;
-            _rb.constraints ^= RigidbodyConstraints2D.FreezePosition;
         } 
 
         private void Attack()
@@ -47,7 +46,6 @@ namespace FogFormer
             IsAttacking = true;
             OnAttack?.Invoke();
             attack.Trigger(null, null);
-            _rb.constraints |= RigidbodyConstraints2D.FreezePosition;
         }
     }
 }

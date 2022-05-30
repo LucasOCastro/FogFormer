@@ -4,7 +4,6 @@ namespace FogFormer
 {
     public abstract class TargetedMover : Mover
     {
-
         protected bool _shouldMove;
         public Vector2 Target { get; protected set; }
         protected virtual void Awake()

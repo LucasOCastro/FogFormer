@@ -939,27 +939,27 @@ PrefabInstance:
     - target: {fileID: 5887877353647187726, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7182512
+      value: 0.23174858
       objectReference: {fileID: 0}
     - target: {fileID: 5887877354207756171, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.54
+      value: 56.19
       objectReference: {fileID: 0}
     - target: {fileID: 5887877354207756171, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.09
+      value: 7.86
       objectReference: {fileID: 0}
     - target: {fileID: 5887877355070584718, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.53999996
+      value: 56.19
       objectReference: {fileID: 0}
     - target: {fileID: 5887877355070584718, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1282518
+      value: 8.128252
       objectReference: {fileID: 0}
     - target: {fileID: 5963689375537933671, guid: 3fcf95a62ae3b7e4babaebbaa3a53203,
         type: 3}
@@ -20843,9 +20843,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
+  tutorialSceneIndex: 0
   gameSceneIndex: 1
   endSceneIndex: 2
-  tutorialSceneIndex: 0
 --- !u!4 &1720836061
 Transform:
   m_ObjectHideFlags: 0
